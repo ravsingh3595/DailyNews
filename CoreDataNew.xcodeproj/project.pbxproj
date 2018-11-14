@@ -10,9 +10,11 @@
 		CE50A3F82120D18E00B32ADB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE50A3F72120D18E00B32ADB /* AppDelegate.swift */; };
 		CE50A3FA2120D18E00B32ADB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE50A3F92120D18E00B32ADB /* ViewController.swift */; };
 		CE50A3FD2120D18E00B32ADB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE50A3FB2120D18E00B32ADB /* Main.storyboard */; };
-		CE50A4002120D18E00B32ADB /* CoreDataNew.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CE50A3FE2120D18E00B32ADB /* CoreDataNew.xcdatamodeld */; };
 		CE50A4022120D18F00B32ADB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE50A4012120D18F00B32ADB /* Assets.xcassets */; };
 		CE50A4052120D18F00B32ADB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE50A4032120D18F00B32ADB /* LaunchScreen.storyboard */; };
+		CE50A40D2120D41200B32ADB /* AddDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE50A40C2120D41200B32ADB /* AddDataViewController.swift */; };
+		CE50A40F2120D45D00B32ADB /* TableDataBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE50A40E2120D45D00B32ADB /* TableDataBaseViewController.swift */; };
+		CEF77FC2219A266400A7935D /* CoreDataNew.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CEF77FC0219A266400A7935D /* CoreDataNew.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,10 +22,12 @@
 		CE50A3F72120D18E00B32ADB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE50A3F92120D18E00B32ADB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		CE50A3FC2120D18E00B32ADB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		CE50A3FF2120D18E00B32ADB /* CoreDataNew.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataNew.xcdatamodel; sourceTree = "<group>"; };
 		CE50A4012120D18F00B32ADB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE50A4042120D18F00B32ADB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE50A4062120D18F00B32ADB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE50A40C2120D41200B32ADB /* AddDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDataViewController.swift; sourceTree = "<group>"; };
+		CE50A40E2120D45D00B32ADB /* TableDataBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableDataBaseViewController.swift; sourceTree = "<group>"; };
+		CEF77FC1219A266400A7935D /* CoreDataNew.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataNew.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,13 +60,15 @@
 		CE50A3F62120D18E00B32ADB /* CoreDataNew */ = {
 			isa = PBXGroup;
 			children = (
+				CEF77FC0219A266400A7935D /* CoreDataNew.xcdatamodeld */,
 				CE50A3F72120D18E00B32ADB /* AppDelegate.swift */,
 				CE50A3F92120D18E00B32ADB /* ViewController.swift */,
 				CE50A3FB2120D18E00B32ADB /* Main.storyboard */,
 				CE50A4012120D18F00B32ADB /* Assets.xcassets */,
 				CE50A4032120D18F00B32ADB /* LaunchScreen.storyboard */,
 				CE50A4062120D18F00B32ADB /* Info.plist */,
-				CE50A3FE2120D18E00B32ADB /* CoreDataNew.xcdatamodeld */,
+				CE50A40C2120D41200B32ADB /* AddDataViewController.swift */,
+				CE50A40E2120D45D00B32ADB /* TableDataBaseViewController.swift */,
 			);
 			path = CoreDataNew;
 			sourceTree = "<group>";
@@ -138,9 +144,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE50A4002120D18E00B32ADB /* CoreDataNew.xcdatamodeld in Sources */,
+				CE50A40D2120D41200B32ADB /* AddDataViewController.swift in Sources */,
+				CE50A40F2120D45D00B32ADB /* TableDataBaseViewController.swift in Sources */,
 				CE50A3FA2120D18E00B32ADB /* ViewController.swift in Sources */,
 				CE50A3F82120D18E00B32ADB /* AppDelegate.swift in Sources */,
+				CEF77FC2219A266400A7935D /* CoreDataNew.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,12 +348,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		CE50A3FE2120D18E00B32ADB /* CoreDataNew.xcdatamodeld */ = {
+		CEF77FC0219A266400A7935D /* CoreDataNew.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				CE50A3FF2120D18E00B32ADB /* CoreDataNew.xcdatamodel */,
+				CEF77FC1219A266400A7935D /* CoreDataNew.xcdatamodel */,
 			);
-			currentVersion = CE50A3FF2120D18E00B32ADB /* CoreDataNew.xcdatamodel */;
+			currentVersion = CEF77FC1219A266400A7935D /* CoreDataNew.xcdatamodel */;
 			path = CoreDataNew.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
