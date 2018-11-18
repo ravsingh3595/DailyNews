@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A17178E1219F2C290089812F /* LetterImageGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17178E0219F2C290089812F /* LetterImageGenerator.swift */; };
+		A17178E4219F2F120089812F /* SubjectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17178E3219F2F120089812F /* SubjectTableViewController.swift */; };
+		A17178E7219F37B60089812F /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17178E6219F37B60089812F /* Extentions.swift */; };
+		A17178EA219F3ACA0089812F /* NoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17178E8219F3ACA0089812F /* NoteTableViewCell.swift */; };
+		A17178EB219F3ACA0089812F /* NoteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A17178E9219F3ACA0089812F /* NoteTableViewCell.xib */; };
+		A17178F0219F3CB20089812F /* location.png in Resources */ = {isa = PBXBuildFile; fileRef = A17178EF219F3CB10089812F /* location.png */; };
+		A17178F2219F3DEE0089812F /* NoteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17178F1219F3DEE0089812F /* NoteTableViewController.swift */; };
+		A17178F4219FE9630089812F /* clock.png in Resources */ = {isa = PBXBuildFile; fileRef = A17178F3219FE9630089812F /* clock.png */; };
+		A17178F621A05A280089812F /* CommonFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17178F521A05A280089812F /* CommonFunctions.swift */; };
+		A18664DD219E8B73001834A6 /* SubjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18664DB219E8B73001834A6 /* SubjectTableViewCell.swift */; };
+		A18664DE219E8B73001834A6 /* SubjectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A18664DC219E8B73001834A6 /* SubjectTableViewCell.xib */; };
 		CE50A3F82120D18E00B32ADB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE50A3F72120D18E00B32ADB /* AppDelegate.swift */; };
 		CE50A3FA2120D18E00B32ADB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE50A3F92120D18E00B32ADB /* ViewController.swift */; };
 		CE50A3FD2120D18E00B32ADB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE50A3FB2120D18E00B32ADB /* Main.storyboard */; };
@@ -18,6 +29,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A17178E0219F2C290089812F /* LetterImageGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LetterImageGenerator.swift; sourceTree = "<group>"; };
+		A17178E3219F2F120089812F /* SubjectTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectTableViewController.swift; sourceTree = "<group>"; };
+		A17178E6219F37B60089812F /* Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
+		A17178E8219F3ACA0089812F /* NoteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTableViewCell.swift; sourceTree = "<group>"; };
+		A17178E9219F3ACA0089812F /* NoteTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoteTableViewCell.xib; sourceTree = "<group>"; };
+		A17178EF219F3CB10089812F /* location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = location.png; path = ../../../../Downloads/location.png; sourceTree = "<group>"; };
+		A17178F1219F3DEE0089812F /* NoteTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTableViewController.swift; sourceTree = "<group>"; };
+		A17178F3219FE9630089812F /* clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clock.png; sourceTree = "<group>"; };
+		A17178F521A05A280089812F /* CommonFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonFunctions.swift; sourceTree = "<group>"; };
+		A18664DB219E8B73001834A6 /* SubjectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectTableViewCell.swift; sourceTree = "<group>"; };
+		A18664DC219E8B73001834A6 /* SubjectTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubjectTableViewCell.xib; sourceTree = "<group>"; };
 		CE50A3F42120D18E00B32ADB /* CoreDataNew.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreDataNew.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE50A3F72120D18E00B32ADB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE50A3F92120D18E00B32ADB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -41,6 +63,52 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A17178DF219F2BB70089812F /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				A17178E0219F2C290089812F /* LetterImageGenerator.swift */,
+				A17178F521A05A280089812F /* CommonFunctions.swift */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		A17178E2219F2E300089812F /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				A17178E3219F2F120089812F /* SubjectTableViewController.swift */,
+				A17178F1219F3DEE0089812F /* NoteTableViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		A17178E5219F378D0089812F /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				A17178E6219F37B60089812F /* Extentions.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		A17178EC219F3C600089812F /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				A17178F3219FE9630089812F /* clock.png */,
+				A17178EF219F3CB10089812F /* location.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		A18664DA219E8969001834A6 /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				A18664DB219E8B73001834A6 /* SubjectTableViewCell.swift */,
+				A18664DC219E8B73001834A6 /* SubjectTableViewCell.xib */,
+				A17178E8219F3ACA0089812F /* NoteTableViewCell.swift */,
+				A17178E9219F3ACA0089812F /* NoteTableViewCell.xib */,
+			);
+			path = cell;
+			sourceTree = "<group>";
+		};
 		CE50A3EB2120D18E00B32ADB = {
 			isa = PBXGroup;
 			children = (
@@ -60,6 +128,11 @@
 		CE50A3F62120D18E00B32ADB /* CoreDataNew */ = {
 			isa = PBXGroup;
 			children = (
+				A17178EC219F3C600089812F /* Images */,
+				A17178E5219F378D0089812F /* Extension */,
+				A17178E2219F2E300089812F /* ViewControllers */,
+				A17178DF219F2BB70089812F /* SupportingFiles */,
+				A18664DA219E8969001834A6 /* cell */,
 				CEF77FC0219A266400A7935D /* CoreDataNew.xcdatamodeld */,
 				CE50A3F72120D18E00B32ADB /* AppDelegate.swift */,
 				CE50A3F92120D18E00B32ADB /* ViewController.swift */,
@@ -131,8 +204,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A18664DE219E8B73001834A6 /* SubjectTableViewCell.xib in Resources */,
 				CE50A4052120D18F00B32ADB /* LaunchScreen.storyboard in Resources */,
 				CE50A4022120D18F00B32ADB /* Assets.xcassets in Resources */,
+				A17178EB219F3ACA0089812F /* NoteTableViewCell.xib in Resources */,
+				A17178F0219F3CB20089812F /* location.png in Resources */,
+				A17178F4219FE9630089812F /* clock.png in Resources */,
 				CE50A3FD2120D18E00B32ADB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -147,8 +224,15 @@
 				CE50A40D2120D41200B32ADB /* AddDataViewController.swift in Sources */,
 				CE50A40F2120D45D00B32ADB /* TableDataBaseViewController.swift in Sources */,
 				CE50A3FA2120D18E00B32ADB /* ViewController.swift in Sources */,
+				A17178EA219F3ACA0089812F /* NoteTableViewCell.swift in Sources */,
 				CE50A3F82120D18E00B32ADB /* AppDelegate.swift in Sources */,
+				A17178E4219F2F120089812F /* SubjectTableViewController.swift in Sources */,
+				A17178F621A05A280089812F /* CommonFunctions.swift in Sources */,
+				A18664DD219E8B73001834A6 /* SubjectTableViewCell.swift in Sources */,
+				A17178F2219F3DEE0089812F /* NoteTableViewController.swift in Sources */,
+				A17178E1219F2C290089812F /* LetterImageGenerator.swift in Sources */,
 				CEF77FC2219A266400A7935D /* CoreDataNew.xcdatamodeld in Sources */,
+				A17178E7219F37B60089812F /* Extentions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,7 +377,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = MKP4QL5587;
+				DEVELOPMENT_TEAM = 3VQ89RTV33;
 				INFOPLIST_FILE = CoreDataNew/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -311,7 +395,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = MKP4QL5587;
+				DEVELOPMENT_TEAM = 3VQ89RTV33;
 				INFOPLIST_FILE = CoreDataNew/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
