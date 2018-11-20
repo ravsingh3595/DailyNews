@@ -20,7 +20,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Algebra " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LnX-FW-pjK">
-                        <rect key="frame" x="16" y="11" width="288" height="21"/>
+                        <rect key="frame" x="16" y="11" width="226" height="21"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -48,26 +48,36 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xcn-4C-xdk">
-                        <rect key="frame" x="0.0" y="92" width="320" height="4"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xcn-4C-xdk">
+                        <rect key="frame" x="0.0" y="94.5" width="320" height="1"/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="d1F-cO-So3"/>
                         </constraints>
                     </view>
+                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="vgu-uI-8O7">
+                        <rect key="frame" x="255" y="6" width="51" height="31"/>
+                        <color key="onTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <connections>
+                            <action selector="switchValueChanged:" destination="KGk-i7-Jjw" eventType="valueChanged" id="ENK-fx-Tod"/>
+                        </connections>
+                    </switch>
                 </subviews>
                 <constraints>
                     <constraint firstItem="LnX-FW-pjK" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="4Ph-03-Qdd"/>
-                    <constraint firstAttribute="trailing" secondItem="LnX-FW-pjK" secondAttribute="trailing" constant="16" id="8TN-nU-QJN"/>
                     <constraint firstItem="xcn-4C-xdk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="BQ7-1h-1QH"/>
                     <constraint firstAttribute="trailing" secondItem="WTy-Cm-MbA" secondAttribute="trailing" constant="16" id="Ca0-VW-pmT"/>
+                    <constraint firstItem="vgu-uI-8O7" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6" id="LYm-HM-wVc"/>
                     <constraint firstItem="O0L-Cb-3lC" firstAttribute="top" secondItem="LnX-FW-pjK" secondAttribute="bottom" constant="8" id="Lm4-fD-tTO"/>
                     <constraint firstItem="LnX-FW-pjK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="LvS-1h-Oom"/>
-                    <constraint firstAttribute="trailing" secondItem="WTy-Cm-MbA" secondAttribute="trailing" constant="16" id="O1j-uY-Wbp"/>
                     <constraint firstItem="O0L-Cb-3lC" firstAttribute="leading" secondItem="LnX-FW-pjK" secondAttribute="leading" id="S5r-E6-4gJ"/>
+                    <constraint firstItem="vgu-uI-8O7" firstAttribute="trailing" secondItem="O0L-Cb-3lC" secondAttribute="trailing" id="TBq-GR-OA1"/>
                     <constraint firstAttribute="bottom" secondItem="WTy-Cm-MbA" secondAttribute="bottom" constant="12.5" id="VeU-8X-3A7"/>
+                    <constraint firstItem="WTy-Cm-MbA" firstAttribute="trailing" secondItem="O0L-Cb-3lC" secondAttribute="trailing" id="bZx-2b-OxA"/>
+                    <constraint firstItem="WTy-Cm-MbA" firstAttribute="trailing" secondItem="vgu-uI-8O7" secondAttribute="trailing" id="dfw-hq-Fn2"/>
                     <constraint firstItem="WTy-Cm-MbA" firstAttribute="centerY" secondItem="fFT-sJ-VRi" secondAttribute="centerY" constant="-0.75" id="gfv-Bt-GME"/>
                     <constraint firstItem="WTy-Cm-MbA" firstAttribute="leading" secondItem="fFT-sJ-VRi" secondAttribute="trailing" constant="4" id="ogU-DG-vJH"/>
+                    <constraint firstItem="vgu-uI-8O7" firstAttribute="leading" secondItem="LnX-FW-pjK" secondAttribute="trailing" constant="13" id="oib-Fc-LeA"/>
                     <constraint firstAttribute="trailing" secondItem="xcn-4C-xdk" secondAttribute="trailing" id="wia-4e-TDf"/>
                     <constraint firstAttribute="bottom" secondItem="xcn-4C-xdk" secondAttribute="bottom" id="x2s-bA-gd0"/>
                     <constraint firstAttribute="trailing" secondItem="O0L-Cb-3lC" secondAttribute="trailing" constant="16" id="yDr-de-aCP"/>
@@ -78,6 +88,7 @@
                 <outlet property="lblDateTime" destination="WTy-Cm-MbA" id="2Hw-9y-Dy1"/>
                 <outlet property="lblNoteContent" destination="O0L-Cb-3lC" id="qWA-pT-MIf"/>
                 <outlet property="lblNoteTitle" destination="LnX-FW-pjK" id="JuR-jq-W3u"/>
+                <outlet property="switchImpNote" destination="vgu-uI-8O7" id="A9Z-Zt-6dg"/>
             </connections>
             <point key="canvasLocation" x="-75.200000000000003" y="101.64917541229386"/>
         </tableViewCell>

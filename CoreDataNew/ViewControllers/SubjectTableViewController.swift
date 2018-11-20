@@ -8,7 +8,8 @@
 
 import UIKit
 
-class SubjectTableViewController: UITableViewController {
+class SubjectTableViewController: UITableViewController, SendSavedSubjectProtocol {
+    
     let cellIdentifier = "SubjectTableViewCell"
     let NoteTableViewControllerIdentifier = "NoteTableViewController"
     
@@ -25,6 +26,9 @@ class SubjectTableViewController: UITableViewController {
         tableView.rowHeight = 70
     }
 
+    @IBAction func addSubjectButtonClicked(_ sender: UIBarButtonItem) {
+        self.showModally()
+    }
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -51,9 +55,26 @@ class SubjectTableViewController: UITableViewController {
         if let noteTableViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: NoteTableViewControllerIdentifier) as? NoteTableViewController
         {
             self.navigationController?.pushViewController(noteTableViewController, animated: true)
+            
+        }
+    }
+    
+    
+    private func showModally(){
+        if let presentedViewController = self.storyboard?.instantiateViewController(withIdentifier: "AddSubjectViewController") as? AddSubjectViewController{
+            presentedViewController.providesPresentationContextTransitionStyle = true
+            presentedViewController.definesPresentationContext = true
+            presentedViewController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext;
+            presentedViewController.view.backgroundColor = UIColor.init(white: 0.4, alpha: 0.8)
+            presentedViewController.delegate = self
+            self.present(presentedViewController, animated: true, completion: nil)
         }
     }
  
+    func saveSubject(title: String, viewController: UIViewController) {
+        print("Title: ", title)
+        viewController.dismiss(animated: true, completion: nil)
+    }
 
     /*
     // Override to support conditional editing of the table view.
