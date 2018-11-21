@@ -13,6 +13,7 @@ class NoteTableViewCell: UITableViewCell {
     @IBOutlet weak var lblNoteTitle: UILabel!
     @IBOutlet weak var lblDateTime: UILabel!
     @IBOutlet weak var lblNoteContent: UILabel!
+    @IBOutlet weak var switchImpNote: UISwitch!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -35,4 +36,12 @@ class NoteTableViewCell: UITableViewCell {
         lblNoteContent.text = noteContent
     }
     
+    @IBAction func switchValueChanged(_ sender: UISwitch) {
+        if (sender.isOn == true){
+            print("UISwitch state is now ON")
+        }
+        else{
+            print("UISwitch state is now Off")
+        }
+    }
 }
