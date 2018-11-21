@@ -29,9 +29,16 @@ class AddNoteViewController: UIViewController {
         
         self.hideKeyboardWhenTappedAround()
         getLocation()
+        
+        UITextView.appearance().tintColor = UIColor.black
+        
+        noteTextView.placeholder = "Enter Note.."
+        titleTextView.placeholder = "Enter Note Title.."
     }
     
     @IBAction func addImageButtonClicked(_ sender: UIButton) {
+        
+        
         
         ImagePickerManager().pickImage(self){ image in
             
