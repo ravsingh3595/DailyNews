@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Co4-Uc-1DH">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ZKr-0s-vQf">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -321,7 +321,18 @@
                         <viewLayoutGuide key="safeArea" id="k5Q-Z6-XLK"/>
                     </view>
                     <navigationItem key="navigationItem" id="aAj-8H-mjg">
-                        <barButtonItem key="rightBarButtonItem" image="location_white.png" id="Fxa-rF-Kec"/>
+                        <rightBarButtonItems>
+                            <barButtonItem image="location_white.png" id="Fxa-rF-Kec">
+                                <connections>
+                                    <action selector="locationButtonClicked:" destination="sYT-LL-Tf9" id="zjf-DL-k3c"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Item" image="unfavorite.png" id="jxY-uj-6ZL">
+                                <connections>
+                                    <action selector="favoriteButtonTapped:" destination="sYT-LL-Tf9" id="E56-DS-oTt"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="addButton" destination="L7Z-Uv-Xv7" id="Z4o-0G-7le"/>
@@ -331,7 +342,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j3W-wv-kSt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4765.6000000000004" y="-298.52216748768473"/>
+            <point key="canvasLocation" x="4030" y="-300"/>
         </scene>
         <!--Add Subject View Controller-->
         <scene sceneID="th2-6R-Muv">
@@ -452,12 +463,56 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ja3-V0-Non" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5724" y="-298.52216748768473"/>
+            <point key="canvasLocation" x="4228" y="480"/>
+        </scene>
+        <!--Show Map View Controller-->
+        <scene sceneID="g8a-dg-MG7">
+            <objects>
+                <viewController storyboardIdentifier="ShowMapViewController" id="0et-e9-dio" customClass="ShowMapViewController" customModule="CoreDataNew" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Dr9-gG-XNc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="f50-XL-xnI">
+                                <rect key="frame" x="0.0" y="44" width="375" height="768"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n9n-gb-Xla">
+                                <rect key="frame" x="340" y="54" width="24" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="8mx-gf-GnP"/>
+                                    <constraint firstAttribute="width" constant="24" id="ra8-Ey-Nl0"/>
+                                </constraints>
+                                <state key="normal" image="close.png">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="closeButtonTapped:" destination="0et-e9-dio" eventType="touchUpInside" id="qyK-wY-gBh"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="f50-XL-xnI" secondAttribute="bottom" id="08w-CP-LA4"/>
+                            <constraint firstItem="UpR-4Y-lwA" firstAttribute="trailing" secondItem="n9n-gb-Xla" secondAttribute="trailing" constant="11" id="BQ1-TU-l0a"/>
+                            <constraint firstItem="f50-XL-xnI" firstAttribute="top" secondItem="UpR-4Y-lwA" secondAttribute="top" id="QH7-gZ-ZY8"/>
+                            <constraint firstItem="n9n-gb-Xla" firstAttribute="top" secondItem="UpR-4Y-lwA" secondAttribute="top" constant="10" id="T1z-oy-pEP"/>
+                            <constraint firstItem="f50-XL-xnI" firstAttribute="trailing" secondItem="UpR-4Y-lwA" secondAttribute="trailing" id="et6-q5-G1C"/>
+                            <constraint firstItem="f50-XL-xnI" firstAttribute="leading" secondItem="UpR-4Y-lwA" secondAttribute="leading" id="xGS-a6-2rO"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="UpR-4Y-lwA"/>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="f50-XL-xnI" id="40w-di-vm6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eoq-W7-9JL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5052" y="-346.55172413793105"/>
         </scene>
         <!--Friends-->
         <scene sceneID="kJI-VZ-J72">
             <objects>
-                <viewController id="IZ3-y6-3wq" customClass="UserViewController" customModule="DisplaySwitcher_Example" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="IZ3-y6-3wq" customClass="UserViewController" customModule="CoreDataNew" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dhD-Bi-SIi"/>
                         <viewControllerLayoutGuide type="bottom" id="uQA-RW-NcG"/>
@@ -589,6 +644,7 @@
         <image name="add_image.png" width="64" height="64"/>
         <image name="close.png" width="64" height="64"/>
         <image name="location_white.png" width="32" height="32"/>
+        <image name="unfavorite.png" width="32" height="32"/>
     </resources>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>

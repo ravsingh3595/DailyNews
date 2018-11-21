@@ -7,36 +7,35 @@
 //
 
 import UIKit
+import CoreLocation
+import MapKit
 
 class AddNoteViewController: UIViewController {
 
     @IBOutlet weak var titleTextView: UITextView!
     @IBOutlet weak var noteTextView: UITextView!
-    
     @IBOutlet weak var addButton: UIButton!
+    
+    var isEdit = false
+    let locationManager = CLLocationManager()
+    var userLocation = CLLocationCoordinate2D()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        titleTextView.delegate = self
         // Do any additional setup after loading the view.
         titleTextView.becomeFirstResponder()
         UITextView.appearance().tintColor = UIColor.black
         
         self.hideKeyboardWhenTappedAround()
-        
-//        titleTextView.placeholder = "Enter title here.."
-//        noteTextView.placeholder = "Enter text here.."
-        
-        
+        getLocation()
     }
     
-
     @IBAction func addImageButtonClicked(_ sender: UIButton) {
         
         ImagePickerManager().pickImage(self){ image in
-            //here is the image
             
+            //here is the image
             let compressedIMg = image.resized(withPercentage: 0.8)
             var attributedString :NSMutableAttributedString!
             attributedString = NSMutableAttributedString(attributedString:self.noteTextView.attributedText)
@@ -55,25 +54,63 @@ class AddNoteViewController: UIViewController {
             attributedString.append(NSAttributedString(string: "\n"))
             self.noteTextView.attributedText = attributedString;
             
-            
             self.noteTextView.becomeFirstResponder()
         }
+    }
+    
+    @IBAction func locationButtonClicked(_ sender: UIBarButtonItem) {
+        if isEdit {
+            // get data from database
+        }else{
+            if let showMapViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ShowMapViewController") as? ShowMapViewController
+            {
+                showMapViewController.location = userLocation
+                self.present(showMapViewController, animated: false, completion: nil)
+            }
+        }
+    }
+    
+    @IBAction func favoriteButtonTapped(_ sender: UIBarButtonItem) {
         
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    func getLocation() {
+        // Ask for Authorisation from the User.
+        self.locationManager.requestAlwaysAuthorization()
+        
+        // For use in foreground
+        self.locationManager.requestWhenInUseAuthorization()
+        
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
+        }
     }
-    */
+    
+    func openMapForPlace() {
+        
+        let latitude: CLLocationDegrees = userLocation.latitude
+        let longitude: CLLocationDegrees = userLocation.longitude
+
+        let regionDistance:CLLocationDistance = 10000
+        let coordinates = CLLocationCoordinate2DMake(latitude, longitude)
+        let regionSpan = MKCoordinateRegionMakeWithDistance(coordinates, regionDistance, regionDistance)
+        let options = [
+            MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: regionSpan.center),
+            MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: regionSpan.span)
+        ]
+        let placemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
+        let mapItem = MKMapItem(placemark: placemark)
+        mapItem.name = "Place Name"
+        mapItem.openInMaps(launchOptions: options)
+
+    }
 
 }
 
-extension AddNoteViewController: UITextViewDelegate{
+extension AddNoteViewController: UITextViewDelegate, CLLocationManagerDelegate{
 //    func textViewDidChange(_ textView: UITextView) {
 //        let fixedWidth = noteTextView.frame.size.width
 //        textView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
@@ -105,4 +142,11 @@ extension AddNoteViewController: UITextViewDelegate{
             addButton.isEnabled = true
         }
     }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
+        userLocation = locValue
+        print("locations = \(locValue.latitude) \(locValue.longitude)")
+    }
+    
 }

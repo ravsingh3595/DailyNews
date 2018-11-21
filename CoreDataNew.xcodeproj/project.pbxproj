@@ -36,6 +36,9 @@
 		A1E8FE5221A387B4001C3F11 /* CellInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E8FE5121A387B4001C3F11 /* CellInterface.swift */; };
 		A1E8FE5521A38967001C3F11 /* CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E8FE5321A38967001C3F11 /* CustomColors.swift */; };
 		A1E8FE5621A38967001C3F11 /* StringUtitlities.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E8FE5421A38967001C3F11 /* StringUtitlities.swift */; };
+		A1E8FE5821A4706A001C3F11 /* ShowMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E8FE5721A4706A001C3F11 /* ShowMapViewController.swift */; };
+		A1E8FE5B21A5DEF0001C3F11 /* unfavorite.png in Resources */ = {isa = PBXBuildFile; fileRef = A1E8FE5921A5DEEB001C3F11 /* unfavorite.png */; };
+		A1E8FE5C21A5DEF0001C3F11 /* favorite.png in Resources */ = {isa = PBXBuildFile; fileRef = A1E8FE5A21A5DEEF001C3F11 /* favorite.png */; };
 		CE50A3F82120D18E00B32ADB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE50A3F72120D18E00B32ADB /* AppDelegate.swift */; };
 		CE50A3FA2120D18E00B32ADB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE50A3F92120D18E00B32ADB /* ViewController.swift */; };
 		CE50A3FD2120D18E00B32ADB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE50A3FB2120D18E00B32ADB /* Main.storyboard */; };
@@ -77,6 +80,9 @@
 		A1E8FE5121A387B4001C3F11 /* CellInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellInterface.swift; sourceTree = "<group>"; };
 		A1E8FE5321A38967001C3F11 /* CustomColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomColors.swift; sourceTree = "<group>"; };
 		A1E8FE5421A38967001C3F11 /* StringUtitlities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringUtitlities.swift; sourceTree = "<group>"; };
+		A1E8FE5721A4706A001C3F11 /* ShowMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowMapViewController.swift; sourceTree = "<group>"; };
+		A1E8FE5921A5DEEB001C3F11 /* unfavorite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unfavorite.png; sourceTree = "<group>"; };
+		A1E8FE5A21A5DEEF001C3F11 /* favorite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = favorite.png; sourceTree = "<group>"; };
 		ABEFCCEDC693A564B5389916 /* Pods_CoreDataNew.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoreDataNew.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE50A3F42120D18E00B32ADB /* CoreDataNew.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreDataNew.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE50A3F72120D18E00B32ADB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -128,6 +134,7 @@
 				A17178F1219F3DEE0089812F /* NoteTableViewController.swift */,
 				A16ADA1821A11B310041B10F /* AddNoteViewController.swift */,
 				A1DEF25C21A26D69004AE3CD /* AddSubjectViewController.swift */,
+				A1E8FE5721A4706A001C3F11 /* ShowMapViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -147,6 +154,8 @@
 			children = (
 				A1DEF25621A1F662004AE3CD /* plus.png */,
 				A1DEF25A21A227D2004AE3CD /* close.png */,
+				A1E8FE5A21A5DEEF001C3F11 /* favorite.png */,
+				A1E8FE5921A5DEEB001C3F11 /* unfavorite.png */,
 				A1DEF26021A2883E004AE3CD /* add_image.png */,
 				A1DEF26421A28921004AE3CD /* location_white.png */,
 				A16ADA1A21A123090041B10F /* image1.png */,
@@ -304,6 +313,7 @@
 				CE50A4052120D18F00B32ADB /* LaunchScreen.storyboard in Resources */,
 				CE50A4022120D18F00B32ADB /* Assets.xcassets in Resources */,
 				A17178EB219F3ACA0089812F /* NoteTableViewCell.xib in Resources */,
+				A1E8FE5B21A5DEF0001C3F11 /* unfavorite.png in Resources */,
 				A1DEF25F21A27222004AE3CD /* save.png in Resources */,
 				A1DEF26121A28844004AE3CD /* add_image.png in Resources */,
 				A1E8FE4F21A383F8001C3F11 /* UserCollectionViewCell.xib in Resources */,
@@ -311,6 +321,7 @@
 				A17178F4219FE9630089812F /* clock.png in Resources */,
 				A1DEF25B21A227D2004AE3CD /* close.png in Resources */,
 				CE50A3FD2120D18E00B32ADB /* Main.storyboard in Resources */,
+				A1E8FE5C21A5DEF0001C3F11 /* favorite.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -366,6 +377,7 @@
 				A1E8FE4621A382F7001C3F11 /* UserViewController.swift in Sources */,
 				CE50A40F2120D45D00B32ADB /* TableDataBaseViewController.swift in Sources */,
 				CE50A3FA2120D18E00B32ADB /* ViewController.swift in Sources */,
+				A1E8FE5821A4706A001C3F11 /* ShowMapViewController.swift in Sources */,
 				A1DEF25D21A26D69004AE3CD /* AddSubjectViewController.swift in Sources */,
 				A1E8FE4921A38354001C3F11 /* UserDataProvider.swift in Sources */,
 				A17178EA219F3ACA0089812F /* NoteTableViewCell.swift in Sources */,

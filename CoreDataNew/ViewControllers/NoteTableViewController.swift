@@ -41,12 +41,12 @@ class NoteTableViewController: UITableViewController {
     }
 
     @IBAction func addNoteBarButtonTapped(_ sender: UIBarButtonItem) {
-        if let addNoteViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: AddNoteViewControllerIdentifier) as? AddNoteViewController
-        {
-            let destinationNavigationController = self.storyboard?.instantiateViewController(withIdentifier: "AddNoteNavigationViewController") as! UINavigationController
-            destinationNavigationController.pushViewController(addNoteViewController, animated: true)
-            self.present(destinationNavigationController, animated: true, completion: nil)
-        }
+//        if let addNoteViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: AddNoteViewControllerIdentifier) as? AddNoteViewController
+//        {
+//            let destinationNavigationController = self.storyboard?.instantiateViewController(withIdentifier: "AddNoteNavigationViewController") as! UINavigationController
+//            destinationNavigationController.pushViewController(addNoteViewController, animated: true)
+//            self.present(destinationNavigationController, animated: true, completion: nil)
+//        }
     }
 
     // MARK: - Table view data source
@@ -97,7 +97,13 @@ class NoteTableViewController: UITableViewController {
  
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       
+        if let addNoteViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: AddNoteViewControllerIdentifier) as? AddNoteViewController
+        {
+            addNoteViewController.isEdit = true
+//            let destinationNavigationController = self.storyboard?.instantiateViewController(withIdentifier: "AddNoteNavigationViewController") as! UINavigationController
+            self.navigationController?.pushViewController(addNoteViewController, animated: true)
+//            self.present(destinationNavigationController, animated: true, completion: nil)
+        }
     }
     
     func deleteAlertView() {
