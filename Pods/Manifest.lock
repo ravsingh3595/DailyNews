@@ -1,0 +1,20 @@
+PODS:
+  - DisplaySwitcher (1.0.1)
+  - IQKeyboardManagerSwift (6.1.1)
+
+DEPENDENCIES:
+  - DisplaySwitcher
+  - IQKeyboardManagerSwift
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - DisplaySwitcher
+    - IQKeyboardManagerSwift
+
+SPEC CHECKSUMS:
+  DisplaySwitcher: 5f725284c28cdf22ea7ba2eee8e8f7e7cb9cdf87
+  IQKeyboardManagerSwift: 977affaeb4d6e971975c7790a6850f31d38f1207
+
+PODFILE CHECKSUM: 11d00134788ba9ea7efacbd679c1661201c3b52e
+
+COCOAPODS: 1.5.3
