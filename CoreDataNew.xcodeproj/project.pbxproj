@@ -15,7 +15,6 @@
 		A17178E7219F37B60089812F /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17178E6219F37B60089812F /* Extentions.swift */; };
 		A17178EA219F3ACA0089812F /* NoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17178E8219F3ACA0089812F /* NoteTableViewCell.swift */; };
 		A17178EB219F3ACA0089812F /* NoteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A17178E9219F3ACA0089812F /* NoteTableViewCell.xib */; };
-		A17178F0219F3CB20089812F /* location.png in Resources */ = {isa = PBXBuildFile; fileRef = A17178EF219F3CB10089812F /* location.png */; };
 		A17178F2219F3DEE0089812F /* NoteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17178F1219F3DEE0089812F /* NoteTableViewController.swift */; };
 		A17178F4219FE9630089812F /* clock.png in Resources */ = {isa = PBXBuildFile; fileRef = A17178F3219FE9630089812F /* clock.png */; };
 		A17178F621A05A280089812F /* CommonFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17178F521A05A280089812F /* CommonFunctions.swift */; };
@@ -27,13 +26,9 @@
 		A1DEF25D21A26D69004AE3CD /* AddSubjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DEF25C21A26D69004AE3CD /* AddSubjectViewController.swift */; };
 		A1DEF25F21A27222004AE3CD /* save.png in Resources */ = {isa = PBXBuildFile; fileRef = A1DEF25E21A27221004AE3CD /* save.png */; };
 		A1DEF26121A28844004AE3CD /* add_image.png in Resources */ = {isa = PBXBuildFile; fileRef = A1DEF26021A2883E004AE3CD /* add_image.png */; };
-		A1DEF26521A28921004AE3CD /* location_white.png in Resources */ = {isa = PBXBuildFile; fileRef = A1DEF26421A28921004AE3CD /* location_white.png */; };
 		A1E8FE4621A382F7001C3F11 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E8FE4521A382F7001C3F11 /* UserViewController.swift */; };
-		A1E8FE4921A38354001C3F11 /* UserDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E8FE4821A38354001C3F11 /* UserDataProvider.swift */; };
-		A1E8FE4B21A383A5001C3F11 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E8FE4A21A383A4001C3F11 /* User.swift */; };
 		A1E8FE4E21A383F8001C3F11 /* UserCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E8FE4C21A383F8001C3F11 /* UserCollectionViewCell.swift */; };
 		A1E8FE4F21A383F8001C3F11 /* UserCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1E8FE4D21A383F8001C3F11 /* UserCollectionViewCell.xib */; };
-		A1E8FE5221A387B4001C3F11 /* CellInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E8FE5121A387B4001C3F11 /* CellInterface.swift */; };
 		A1E8FE5521A38967001C3F11 /* CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E8FE5321A38967001C3F11 /* CustomColors.swift */; };
 		A1E8FE5621A38967001C3F11 /* StringUtitlities.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E8FE5421A38967001C3F11 /* StringUtitlities.swift */; };
 		A1E8FE5821A4706A001C3F11 /* ShowMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E8FE5721A4706A001C3F11 /* ShowMapViewController.swift */; };
@@ -46,6 +41,9 @@
 		CE50A4052120D18F00B32ADB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE50A4032120D18F00B32ADB /* LaunchScreen.storyboard */; };
 		CE50A40D2120D41200B32ADB /* AddDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE50A40C2120D41200B32ADB /* AddDataViewController.swift */; };
 		CE50A40F2120D45D00B32ADB /* TableDataBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE50A40E2120D45D00B32ADB /* TableDataBaseViewController.swift */; };
+		CE8D41AB21A5FC4E00DB798C /* UserDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8D41A721A5FC4D00DB798C /* UserDataProvider.swift */; };
+		CE8D41AC21A5FC4E00DB798C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8D41A821A5FC4D00DB798C /* User.swift */; };
+		CE8D41AD21A5FC4E00DB798C /* CellInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8D41AA21A5FC4D00DB798C /* CellInterface.swift */; };
 		CEF77FC2219A266400A7935D /* CoreDataNew.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CEF77FC0219A266400A7935D /* CoreDataNew.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
@@ -59,7 +57,6 @@
 		A17178E6219F37B60089812F /* Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
 		A17178E8219F3ACA0089812F /* NoteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTableViewCell.swift; sourceTree = "<group>"; };
 		A17178E9219F3ACA0089812F /* NoteTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoteTableViewCell.xib; sourceTree = "<group>"; };
-		A17178EF219F3CB10089812F /* location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = location.png; path = ../../../../Downloads/location.png; sourceTree = "<group>"; };
 		A17178F1219F3DEE0089812F /* NoteTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTableViewController.swift; sourceTree = "<group>"; };
 		A17178F3219FE9630089812F /* clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clock.png; sourceTree = "<group>"; };
 		A17178F521A05A280089812F /* CommonFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonFunctions.swift; sourceTree = "<group>"; };
@@ -71,13 +68,9 @@
 		A1DEF25C21A26D69004AE3CD /* AddSubjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubjectViewController.swift; sourceTree = "<group>"; };
 		A1DEF25E21A27221004AE3CD /* save.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = save.png; sourceTree = "<group>"; };
 		A1DEF26021A2883E004AE3CD /* add_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add_image.png; sourceTree = "<group>"; };
-		A1DEF26421A28921004AE3CD /* location_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = location_white.png; path = ../../../../Downloads/location_white.png; sourceTree = "<group>"; };
 		A1E8FE4521A382F7001C3F11 /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
-		A1E8FE4821A38354001C3F11 /* UserDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDataProvider.swift; sourceTree = "<group>"; };
-		A1E8FE4A21A383A4001C3F11 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A1E8FE4C21A383F8001C3F11 /* UserCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCollectionViewCell.swift; sourceTree = "<group>"; };
 		A1E8FE4D21A383F8001C3F11 /* UserCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserCollectionViewCell.xib; sourceTree = "<group>"; };
-		A1E8FE5121A387B4001C3F11 /* CellInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellInterface.swift; sourceTree = "<group>"; };
 		A1E8FE5321A38967001C3F11 /* CustomColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomColors.swift; sourceTree = "<group>"; };
 		A1E8FE5421A38967001C3F11 /* StringUtitlities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringUtitlities.swift; sourceTree = "<group>"; };
 		A1E8FE5721A4706A001C3F11 /* ShowMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowMapViewController.swift; sourceTree = "<group>"; };
@@ -93,6 +86,9 @@
 		CE50A4062120D18F00B32ADB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE50A40C2120D41200B32ADB /* AddDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDataViewController.swift; sourceTree = "<group>"; };
 		CE50A40E2120D45D00B32ADB /* TableDataBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableDataBaseViewController.swift; sourceTree = "<group>"; };
+		CE8D41A721A5FC4D00DB798C /* UserDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDataProvider.swift; sourceTree = "<group>"; };
+		CE8D41A821A5FC4D00DB798C /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		CE8D41AA21A5FC4D00DB798C /* CellInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellInterface.swift; sourceTree = "<group>"; };
 		CEF77FC1219A266400A7935D /* CoreDataNew.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataNew.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -157,11 +153,9 @@
 				A1E8FE5A21A5DEEF001C3F11 /* favorite.png */,
 				A1E8FE5921A5DEEB001C3F11 /* unfavorite.png */,
 				A1DEF26021A2883E004AE3CD /* add_image.png */,
-				A1DEF26421A28921004AE3CD /* location_white.png */,
 				A16ADA1A21A123090041B10F /* image1.png */,
 				A1DEF25E21A27221004AE3CD /* save.png */,
 				A17178F3219FE9630089812F /* clock.png */,
-				A17178EF219F3CB10089812F /* location.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -177,23 +171,6 @@
 				A17178E9219F3ACA0089812F /* NoteTableViewCell.xib */,
 			);
 			path = cell;
-			sourceTree = "<group>";
-		};
-		A1E8FE4721A38337001C3F11 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				A1E8FE4A21A383A4001C3F11 /* User.swift */,
-				A1E8FE4821A38354001C3F11 /* UserDataProvider.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		A1E8FE5021A38795001C3F11 /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				A1E8FE5121A387B4001C3F11 /* CellInterface.swift */,
-			);
-			path = Protocols;
 			sourceTree = "<group>";
 		};
 		CE50A3EB2120D18E00B32ADB = {
@@ -217,8 +194,8 @@
 		CE50A3F62120D18E00B32ADB /* CoreDataNew */ = {
 			isa = PBXGroup;
 			children = (
-				A1E8FE5021A38795001C3F11 /* Protocols */,
-				A1E8FE4721A38337001C3F11 /* Model */,
+				CE8D41A621A5FC4D00DB798C /* Model */,
+				CE8D41A921A5FC4D00DB798C /* Protocols */,
 				A17178EC219F3C600089812F /* Images */,
 				A17178E5219F378D0089812F /* Extension */,
 				A17178E2219F2E300089812F /* ViewControllers */,
@@ -235,6 +212,23 @@
 				CE50A40E2120D45D00B32ADB /* TableDataBaseViewController.swift */,
 			);
 			path = CoreDataNew;
+			sourceTree = "<group>";
+		};
+		CE8D41A621A5FC4D00DB798C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CE8D41A721A5FC4D00DB798C /* UserDataProvider.swift */,
+				CE8D41A821A5FC4D00DB798C /* User.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CE8D41A921A5FC4D00DB798C /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				CE8D41AA21A5FC4D00DB798C /* CellInterface.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		CF315DF520291151EC453956 /* Pods */ = {
@@ -306,7 +300,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A1DEF26521A28921004AE3CD /* location_white.png in Resources */,
 				A18664DE219E8B73001834A6 /* SubjectTableViewCell.xib in Resources */,
 				A16ADA1B21A1230A0041B10F /* image1.png in Resources */,
 				A1DEF25721A1F663004AE3CD /* plus.png in Resources */,
@@ -317,7 +310,6 @@
 				A1DEF25F21A27222004AE3CD /* save.png in Resources */,
 				A1DEF26121A28844004AE3CD /* add_image.png in Resources */,
 				A1E8FE4F21A383F8001C3F11 /* UserCollectionViewCell.xib in Resources */,
-				A17178F0219F3CB20089812F /* location.png in Resources */,
 				A17178F4219FE9630089812F /* clock.png in Resources */,
 				A1DEF25B21A227D2004AE3CD /* close.png in Resources */,
 				CE50A3FD2120D18E00B32ADB /* Main.storyboard in Resources */,
@@ -376,23 +368,23 @@
 				CE50A40D2120D41200B32ADB /* AddDataViewController.swift in Sources */,
 				A1E8FE4621A382F7001C3F11 /* UserViewController.swift in Sources */,
 				CE50A40F2120D45D00B32ADB /* TableDataBaseViewController.swift in Sources */,
+				CE8D41AC21A5FC4E00DB798C /* User.swift in Sources */,
 				CE50A3FA2120D18E00B32ADB /* ViewController.swift in Sources */,
+				CE8D41AD21A5FC4E00DB798C /* CellInterface.swift in Sources */,
 				A1E8FE5821A4706A001C3F11 /* ShowMapViewController.swift in Sources */,
 				A1DEF25D21A26D69004AE3CD /* AddSubjectViewController.swift in Sources */,
-				A1E8FE4921A38354001C3F11 /* UserDataProvider.swift in Sources */,
 				A17178EA219F3ACA0089812F /* NoteTableViewCell.swift in Sources */,
 				CE50A3F82120D18E00B32ADB /* AppDelegate.swift in Sources */,
 				A17178E4219F2F120089812F /* SubjectTableViewController.swift in Sources */,
 				A17178F621A05A280089812F /* CommonFunctions.swift in Sources */,
 				A18664DD219E8B73001834A6 /* SubjectTableViewCell.swift in Sources */,
 				A17178F2219F3DEE0089812F /* NoteTableViewController.swift in Sources */,
+				CE8D41AB21A5FC4E00DB798C /* UserDataProvider.swift in Sources */,
 				A1DEF25321A1270A004AE3CD /* ImagePickerManager.swift in Sources */,
 				A1E8FE4E21A383F8001C3F11 /* UserCollectionViewCell.swift in Sources */,
 				A16ADA1921A11B320041B10F /* AddNoteViewController.swift in Sources */,
-				A1E8FE5221A387B4001C3F11 /* CellInterface.swift in Sources */,
 				A1E8FE5621A38967001C3F11 /* StringUtitlities.swift in Sources */,
 				A1E8FE5521A38967001C3F11 /* CustomColors.swift in Sources */,
-				A1E8FE4B21A383A5001C3F11 /* User.swift in Sources */,
 				A17178E1219F2C290089812F /* LetterImageGenerator.swift in Sources */,
 				CEF77FC2219A266400A7935D /* CoreDataNew.xcdatamodeld in Sources */,
 				A17178E7219F37B60089812F /* Extentions.swift in Sources */,
@@ -541,7 +533,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3VQ89RTV33;
+				DEVELOPMENT_TEAM = MKP4QL5587;
 				INFOPLIST_FILE = CoreDataNew/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -560,7 +552,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3VQ89RTV33;
+				DEVELOPMENT_TEAM = MKP4QL5587;
 				INFOPLIST_FILE = CoreDataNew/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
