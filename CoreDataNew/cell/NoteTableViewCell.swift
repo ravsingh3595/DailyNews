@@ -9,11 +9,12 @@
 import UIKit
 
 class NoteTableViewCell: UITableViewCell {
+    
+    var onFavButtonTapped: ((_ value: Bool) -> ())?
 
     @IBOutlet weak var lblNoteTitle: UILabel!
     @IBOutlet weak var lblDateTime: UILabel!
     @IBOutlet weak var lblNoteContent: UILabel!
-    @IBOutlet weak var switchImpNote: UISwitch!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,18 +31,23 @@ class NoteTableViewCell: UITableViewCell {
         
     }
     
+    @IBAction func favButtonTapped(_ sender: UIButton) {
+        sender.isSelected = !sender.isSelected
+        onFavButtonTapped?(sender.isSelected)
+    }
+    
     func setValues(title: String, noteContent: String, dateTimeString: String) {
         lblNoteTitle.text = title
         lblDateTime.text = dateTimeString
         lblNoteContent.text = noteContent
     }
     
-    @IBAction func switchValueChanged(_ sender: UISwitch) {
-        if (sender.isOn == true){
-            print("UISwitch state is now ON")
-        }
-        else{
-            print("UISwitch state is now Off")
-        }
-    }
+//    @IBAction func switchValueChanged(_ sender: UISwitch) {
+//        if (sender.isOn == true){
+//            print("UISwitch state is now ON")
+//        }
+//        else{
+//            print("UISwitch state is now Off")
+//        }
+//    }
 }

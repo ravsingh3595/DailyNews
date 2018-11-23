@@ -12,42 +12,39 @@ class NoteTableViewController: UITableViewController {
 
     let cellIdentifier = "NoteTableViewCell"
     let AddNoteViewControllerIdentifier = "AddNoteViewController"
-    
     var searchActive : Bool = false
-    
+    var subject: Subject?
     var data:[String] = ["Dev","Hiren","Bhagyashree","Himanshu","Manisha","Trupti","Prashant","Kishor","Jignesh","Rushi"]
+    var filterdata:[String]?
+    var noteArray: [Note]?
     
-     var filterdata:[String]?
     
     @IBOutlet weak var searchBar: UISearchBar!
-    //    lazy var searchBar = UISearchBar(frame:CGRect.zero)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
         tableView.register(UINib(nibName: cellIdentifier, bundle: nil), forCellReuseIdentifier: cellIdentifier)
         tableView.rowHeight = 90
         
         searchBar.showsCancelButton = true
         
+        self.title = subject?.subjectTitle
+        
+            //    lazy var searchBar = UISearchBar(frame:CGRect.zero)
 //        searchBar = UISearchBar()
 //        searchBar.sizeToFit()
 //        navigationItem.titleView = searchBar
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.getData()
+    }
 
     @IBAction func addNoteBarButtonTapped(_ sender: UIBarButtonItem) {
-//        if let addNoteViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: AddNoteViewControllerIdentifier) as? AddNoteViewController
-//        {
-//            let destinationNavigationController = self.storyboard?.instantiateViewController(withIdentifier: "AddNoteNavigationViewController") as! UINavigationController
-//            destinationNavigationController.pushViewController(addNoteViewController, animated: true)
-//            self.present(destinationNavigationController, animated: true, completion: nil)
-//        }
+       
     }
+    
+    
 
     // MARK: - Table view data source
 
@@ -68,14 +65,16 @@ class NoteTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! NoteTableViewCell
-
+        cell.onFavButtonTapped = {value in
+            print("Value: ", value)
+        }
         // Configure the cell...
         if filterdata?.count != nil
         {
-            cell.setValues(title: filterdata?[indexPath.row] ?? "", noteContent: "Math Algerbra Content Math Algerbra Content Math Algerbra Content Math Algerbra Content", dateTimeString: "21 dec, 2018 4: 13 pm")
+            cell.setValues(title: filterdata?[indexPath.row] ?? "", noteContent: "Math Algerbra Content Math Algerbra Content Math Algerbra Content Math Algerbra Content", dateTimeString: "21 dec, 2018 4:13 pm")
         }
         else{
-             cell.setValues(title: "Math Algerbra Math Algerbra Math Algerbra Math Algerbra", noteContent: "Math Algerbra Content Math Algerbra Content Math Algerbra Content Math Algerbra Content", dateTimeString: "21 dec, 2018 4: 13 pm")
+             cell.setValues(title: "Math Algerbra Math Algerbra Math Algerbra Math Algerbra", noteContent: "Math Algerbra Content Math Algerbra Content Math Algerbra Content Math Algerbra Content", dateTimeString: "21 dec, 2018 4:13 pm")
         }
         return cell
     }
@@ -100,6 +99,7 @@ class NoteTableViewController: UITableViewController {
         if let addNoteViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: AddNoteViewControllerIdentifier) as? AddNoteViewController
         {
             addNoteViewController.isEdit = true
+            addNoteViewController.subject = subject
 //            let destinationNavigationController = self.storyboard?.instantiateViewController(withIdentifier: "AddNoteNavigationViewController") as! UINavigationController
             self.navigationController?.pushViewController(addNoteViewController, animated: true)
 //            self.present(destinationNavigationController, animated: true, completion: nil)
@@ -126,6 +126,19 @@ class NoteTableViewController: UITableViewController {
         
         // Present dialog message to user
         self.present(dialogMessage, animated: true, completion: nil)
+    }
+    
+    func getData() {
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        
+        do{
+            self.noteArray = try context.fetch(Note.fetchRequest())
+        }
+        catch
+        {
+            print("Error")
+        }
+        tableView.reloadData()
     }
 
 }

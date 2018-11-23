@@ -156,7 +156,7 @@
             </objects>
             <point key="canvasLocation" x="1386" y="-299"/>
         </scene>
-        <!--Subject Table View Controller-->
+        <!--Subject-->
         <scene sceneID="dbi-2B-cTL">
             <objects>
                 <tableViewController storyboardIdentifier="SubjectTableViewController" id="Mko-LU-u2y" customClass="SubjectTableViewController" customModule="CoreDataNew" customModuleProvider="target" sceneMemberID="viewController">
@@ -179,7 +179,7 @@
                             <outlet property="delegate" destination="Mko-LU-u2y" id="4oM-bS-7qM"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="2bx-0w-8Ga">
+                    <navigationItem key="navigationItem" title="Subject" id="2bx-0w-8Ga">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="fZG-hQ-MYs">
                             <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
@@ -195,7 +195,7 @@
             </objects>
             <point key="canvasLocation" x="2327" y="-299"/>
         </scene>
-        <!--Note Table View Controller-->
+        <!--Note-->
         <scene sceneID="Zh8-Ko-LQC">
             <objects>
                 <tableViewController storyboardIdentifier="NoteTableViewController" id="Knk-dw-WkA" customClass="NoteTableViewController" customModule="CoreDataNew" customModuleProvider="target" sceneMemberID="viewController">
@@ -233,7 +233,7 @@
                             <outlet property="delegate" destination="Knk-dw-WkA" id="B6K-kd-s5p"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="bCu-u5-P8x">
+                    <navigationItem key="navigationItem" title="Note" id="bCu-u5-P8x">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Gej-8h-x7h">
                             <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
@@ -302,10 +302,19 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="7kP-a9-8Hc"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                         <state key="normal" title="Save">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="saveButtonTapped:" destination="sYT-LL-Tf9" eventType="touchUpInside" id="Xnj-Et-2sw"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HNA-Ii-q1A">
                                         <rect key="frame" x="278" y="643" width="32" height="32"/>
@@ -317,6 +326,9 @@
                                         <state key="normal" image="delete2.png">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="deleteButtonTapped:" destination="sYT-LL-Tf9" eventType="touchUpInside" id="CUb-ZT-idf"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -363,6 +375,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="addButton" destination="L7Z-Uv-Xv7" id="Z4o-0G-7le"/>
+                        <outlet property="favoriteButton" destination="jxY-uj-6ZL" id="JCt-D9-kIM"/>
                         <outlet property="noteTextView" destination="IQG-Mg-BzJ" id="ZFi-yJ-Wnc"/>
                         <outlet property="titleTextView" destination="acQ-Or-9dC" id="8l3-Ja-xbL"/>
                     </connections>

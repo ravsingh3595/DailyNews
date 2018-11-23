@@ -15,10 +15,15 @@ class AddNoteViewController: UIViewController {
     @IBOutlet weak var titleTextView: UITextView!
     @IBOutlet weak var noteTextView: UITextView!
     @IBOutlet weak var addButton: UIButton!
+    @IBOutlet weak var favoriteButton: UIBarButtonItem!
     
     var isEdit = false
     let locationManager = CLLocationManager()
     var userLocation = CLLocationCoordinate2D()
+    var subjectId = 0
+    var subject :Subject?
+    var note: Note?
+    var isSelected = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,12 +39,22 @@ class AddNoteViewController: UIViewController {
         
         noteTextView.placeholder = "Enter Note.."
         titleTextView.placeholder = "Enter Note Title.."
+        
+        if(isEdit){
+            titleTextView.text = note?.title
+            noteTextView.text = note?.content
+           
+            // value from database
+            if (note?.isImp)!{
+                favoriteButton.image = UIImage(named: "favorite.png")
+            }else{
+                favoriteButton.image = UIImage(named: "unfavorite.png")
+            }
+            
+        }
     }
     
     @IBAction func addImageButtonClicked(_ sender: UIButton) {
-        
-        
-        
         ImagePickerManager().pickImage(self){ image in
             
             //here is the image
@@ -66,21 +81,55 @@ class AddNoteViewController: UIViewController {
     }
     
     @IBAction func locationButtonClicked(_ sender: UIBarButtonItem) {
-        if isEdit {
-            // get data from database
-        }else{
-            if let showMapViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ShowMapViewController") as? ShowMapViewController
-            {
+        if let showMapViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ShowMapViewController") as? ShowMapViewController
+        {
+            if isEdit {
+                // get data from database
+                var location = CLLocationCoordinate2D()
+                location.latitude = note?.latitude ?? -1
+                location.longitude = note?.longitude ?? -1
+            }else{
                 showMapViewController.location = userLocation
-                self.present(showMapViewController, animated: false, completion: nil)
+            }
+            
+            self.present(showMapViewController, animated: false, completion: nil)
+        }
+        
+    }
+    
+    @IBAction func favoriteButtonTapped(_ sender: UIBarButtonItem) {
+        if(isEdit){
+            // value from database
+            note?.isImp = !((note?.isImp)!)
+            if (note?.isImp)!{
+                sender.image = UIImage(named: "favorite.png")
+            }else{
+                sender.image = UIImage(named: "unfavorite.png")
+            }
+        }else{
+            isSelected = !isSelected
+            if (isSelected){
+                sender.image = UIImage(named: "favorite.png")
+            }else{
+                sender.image = UIImage(named: "unfavorite.png")
             }
         }
     }
     
-    @IBAction func favoriteButtonTapped(_ sender: UIBarButtonItem) {
-        
+    @IBAction func saveButtonTapped(_ sender: UIButton) {
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let note = Note(context: context)
+        note.title = titleTextView.text
+        note.content = noteTextView.text
+        note.latitude = userLocation.latitude
+        note.longitude = userLocation.longitude
+        note.subjectId = subject?.subjectId ?? 0
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
     }
     
+    @IBAction func deleteButtonTapped(_ sender: UIButton) {
+        
+    }
     
     func getLocation() {
         // Ask for Authorisation from the User.
@@ -155,5 +204,7 @@ extension AddNoteViewController: UITextViewDelegate, CLLocationManagerDelegate{
         userLocation = locValue
         print("locations = \(locValue.latitude) \(locValue.longitude)")
     }
+    
+    
     
 }
