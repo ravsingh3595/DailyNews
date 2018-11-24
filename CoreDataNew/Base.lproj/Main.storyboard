@@ -234,13 +234,20 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Note" id="bCu-u5-P8x">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Gej-8h-x7h">
-                            <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <connections>
-                                <action selector="addNoteBarButtonTapped:" destination="Knk-dw-WkA" id="hdp-QT-ami"/>
-                                <segue destination="sYT-LL-Tf9" kind="show" id="Lxx-cB-idd"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="Gej-8h-x7h">
+                                <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="addNoteBarButtonTapped:" destination="Knk-dw-WkA" id="hdp-QT-ami"/>
+                                    <segue destination="sYT-LL-Tf9" kind="show" id="Lxx-cB-idd"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="sort.png" id="8EE-F6-zWg">
+                                <connections>
+                                    <action selector="sortNoteButtonTapped:" destination="Knk-dw-WkA" id="bSr-Oj-dPX"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="searchBar" destination="0Fn-vp-MhD" id="Gms-F2-pUd"/>
@@ -248,7 +255,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FfE-A1-f6i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3072.8000000000002" y="-300"/>
+            <point key="canvasLocation" x="3172" y="-300"/>
         </scene>
         <!--Add Note View Controller-->
         <scene sceneID="hri-tA-vrx">
@@ -679,12 +686,121 @@
             </objects>
             <point key="canvasLocation" x="2325.5999999999999" y="479.55665024630542"/>
         </scene>
+        <!--Filter Note View Controller-->
+        <scene sceneID="Pji-di-BFH">
+            <objects>
+                <viewController storyboardIdentifier="FilterNoteViewController" id="bJ9-fh-2cX" customClass="FilterNoteViewController" customModule="CoreDataNew" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="k7r-0n-uaH"/>
+                        <viewControllerLayoutGuide type="bottom" id="sf0-pf-Esw"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4cD-kK-3p2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fqk-D6-Zzw">
+                                <rect key="frame" x="339" y="44" width="28" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="28" id="57v-7F-ncc"/>
+                                    <constraint firstAttribute="height" constant="28" id="Z7K-EA-Jg1"/>
+                                </constraints>
+                                <state key="normal" image="close.png"/>
+                                <connections>
+                                    <action selector="closeButtonTapped:" destination="bJ9-fh-2cX" eventType="touchUpInside" id="Ki6-hu-gXx"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kPP-FI-7k5">
+                                <rect key="frame" x="41" y="291" width="293" height="211"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1j7-cy-ryd">
+                                        <rect key="frame" x="8" y="44" width="277" height="159"/>
+                                        <subviews>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CeK-RL-xgl">
+                                                <rect key="frame" x="0.0" y="0.0" width="277" height="159"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <prototypes>
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="checkmark" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="9JB-YP-ddt">
+                                                        <rect key="frame" x="0.0" y="28" width="277" height="44"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9JB-YP-ddt" id="9lX-dU-HEk">
+                                                            <rect key="frame" x="0.0" y="0.0" width="238" height="43.666666666666664"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                        </tableViewCellContentView>
+                                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </tableViewCell>
+                                                </prototypes>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="bJ9-fh-2cX" id="X6D-vJ-JuG"/>
+                                                    <outlet property="delegate" destination="bJ9-fh-2cX" id="rIN-W9-JIw"/>
+                                                </connections>
+                                            </tableView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="CeK-RL-xgl" secondAttribute="trailing" id="bXy-9i-5eX"/>
+                                            <constraint firstAttribute="bottom" secondItem="CeK-RL-xgl" secondAttribute="bottom" id="mMc-Ym-wRj"/>
+                                            <constraint firstItem="CeK-RL-xgl" firstAttribute="leading" secondItem="1j7-cy-ryd" secondAttribute="leading" id="me9-A6-RCs"/>
+                                            <constraint firstItem="CeK-RL-xgl" firstAttribute="top" secondItem="1j7-cy-ryd" secondAttribute="top" id="n2t-2a-JWB"/>
+                                            <constraint firstAttribute="height" constant="159" id="u7b-ad-bFf"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sort Note" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Umb-py-Kba">
+                                        <rect key="frame" x="8" y="15" width="77" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="1j7-cy-ryd" secondAttribute="bottom" constant="8" id="MlE-Lj-Qiw"/>
+                                    <constraint firstItem="Umb-py-Kba" firstAttribute="top" secondItem="kPP-FI-7k5" secondAttribute="top" constant="15" id="NLz-7d-1t3"/>
+                                    <constraint firstAttribute="trailing" secondItem="1j7-cy-ryd" secondAttribute="trailing" constant="8" id="Rqq-7m-QJY"/>
+                                    <constraint firstItem="1j7-cy-ryd" firstAttribute="leading" secondItem="kPP-FI-7k5" secondAttribute="leading" constant="8" id="Y3B-RV-NOi"/>
+                                    <constraint firstItem="1j7-cy-ryd" firstAttribute="top" secondItem="kPP-FI-7k5" secondAttribute="top" constant="44" id="lWl-q5-mZx"/>
+                                    <constraint firstItem="Umb-py-Kba" firstAttribute="leading" secondItem="kPP-FI-7k5" secondAttribute="leading" constant="8" id="qlK-aa-OMt"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="48A-8I-hqE" firstAttribute="trailing" secondItem="kPP-FI-7k5" secondAttribute="trailing" constant="41" id="Ohn-hl-3nK"/>
+                            <constraint firstItem="sf0-pf-Esw" firstAttribute="top" relation="greaterThanOrEqual" secondItem="kPP-FI-7k5" secondAttribute="bottom" constant="276" id="Xqj-dX-8v4"/>
+                            <constraint firstItem="kPP-FI-7k5" firstAttribute="leading" secondItem="48A-8I-hqE" secondAttribute="leading" constant="41" id="d5c-62-zqd"/>
+                            <constraint firstItem="fqk-D6-Zzw" firstAttribute="top" secondItem="k7r-0n-uaH" secondAttribute="bottom" id="mHa-pX-vDa"/>
+                            <constraint firstItem="kPP-FI-7k5" firstAttribute="centerX" secondItem="4cD-kK-3p2" secondAttribute="centerX" id="ruy-ww-yLj"/>
+                            <constraint firstAttribute="trailing" secondItem="fqk-D6-Zzw" secondAttribute="trailing" constant="8" id="szy-EV-pJz"/>
+                            <constraint firstItem="kPP-FI-7k5" firstAttribute="top" relation="greaterThanOrEqual" secondItem="k7r-0n-uaH" secondAttribute="bottom" constant="247" id="v2M-GF-aN9"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="48A-8I-hqE"/>
+                    </view>
+                    <connections>
+                        <outlet property="filterTableView" destination="CeK-RL-xgl" id="HVK-u1-DOa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kZf-E0-e2o" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5008.8000000000002" y="466.99507389162562"/>
+        </scene>
     </scenes>
     <resources>
         <image name="add_image.png" width="64" height="64"/>
         <image name="close.png" width="64" height="64"/>
         <image name="delete2.png" width="32" height="32"/>
         <image name="location_white.png" width="32" height="32"/>
+        <image name="sort.png" width="32" height="32"/>
         <image name="unfavorite.png" width="32" height="32"/>
     </resources>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
