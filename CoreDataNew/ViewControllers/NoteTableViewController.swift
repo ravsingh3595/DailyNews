@@ -8,8 +8,8 @@
 
 import UIKit
 
-class NoteTableViewController: UITableViewController {
-
+class NoteTableViewController: UITableViewController, SelectSortOptionProtocol {
+    
     let cellIdentifier = "NoteTableViewCell"
     let AddNoteViewControllerIdentifier = "AddNoteViewController"
     var searchActive : Bool = false
@@ -44,6 +44,14 @@ class NoteTableViewController: UITableViewController {
        
     }
     
+    @IBAction func sortNoteButtonTapped(_ sender: UIBarButtonItem) {
+        showModally()
+    }
+    
+    func sortNote(sortOption: String, viewController: UIViewController) {
+        print(sortOption)
+        viewController.dismiss(animated: true, completion: nil)
+    }
     
 
     // MARK: - Table view data source
@@ -140,6 +148,19 @@ class NoteTableViewController: UITableViewController {
         }
         tableView.reloadData()
     }
+    
+    private func showModally(){
+        if let presentedViewController = self.storyboard?.instantiateViewController(withIdentifier: "FilterNoteViewController") as? FilterNoteViewController{
+            presentedViewController.providesPresentationContextTransitionStyle = true
+            presentedViewController.definesPresentationContext = true
+            presentedViewController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext;
+            presentedViewController.view.backgroundColor = UIColor.init(white: 0.4, alpha: 0.8)
+            presentedViewController.delegate = self
+            self.present(presentedViewController, animated: true, completion: nil)
+        }
+    }
+    
+    
 
 }
 

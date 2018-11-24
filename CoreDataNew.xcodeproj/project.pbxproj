@@ -21,6 +21,9 @@
 		A17178F621A05A280089812F /* CommonFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17178F521A05A280089812F /* CommonFunctions.swift */; };
 		A18664DD219E8B73001834A6 /* SubjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18664DB219E8B73001834A6 /* SubjectTableViewCell.swift */; };
 		A18664DE219E8B73001834A6 /* SubjectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A18664DC219E8B73001834A6 /* SubjectTableViewCell.xib */; };
+		A1A1593C21A7B60100D1FA05 /* FilterNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A1593B21A7B60100D1FA05 /* FilterNoteViewController.swift */; };
+		A1A1593E21A7B8C800D1FA05 /* sort.png in Resources */ = {isa = PBXBuildFile; fileRef = A1A1593D21A7B8C700D1FA05 /* sort.png */; };
+		A1A1594021A7C51B00D1FA05 /* SortNoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A1593F21A7C51B00D1FA05 /* SortNoteTableViewCell.swift */; };
 		A1DEF25321A1270A004AE3CD /* ImagePickerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DEF25221A1270A004AE3CD /* ImagePickerManager.swift */; };
 		A1DEF25721A1F663004AE3CD /* plus.png in Resources */ = {isa = PBXBuildFile; fileRef = A1DEF25621A1F662004AE3CD /* plus.png */; };
 		A1DEF25B21A227D2004AE3CD /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = A1DEF25A21A227D2004AE3CD /* close.png */; };
@@ -68,6 +71,9 @@
 		A17178F521A05A280089812F /* CommonFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonFunctions.swift; sourceTree = "<group>"; };
 		A18664DB219E8B73001834A6 /* SubjectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectTableViewCell.swift; sourceTree = "<group>"; };
 		A18664DC219E8B73001834A6 /* SubjectTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubjectTableViewCell.xib; sourceTree = "<group>"; };
+		A1A1593B21A7B60100D1FA05 /* FilterNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterNoteViewController.swift; sourceTree = "<group>"; };
+		A1A1593D21A7B8C700D1FA05 /* sort.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sort.png; sourceTree = "<group>"; };
+		A1A1593F21A7C51B00D1FA05 /* SortNoteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortNoteTableViewCell.swift; sourceTree = "<group>"; };
 		A1DEF25221A1270A004AE3CD /* ImagePickerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerManager.swift; sourceTree = "<group>"; };
 		A1DEF25621A1F662004AE3CD /* plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plus.png; sourceTree = "<group>"; };
 		A1DEF25A21A227D2004AE3CD /* close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close.png; sourceTree = "<group>"; };
@@ -141,6 +147,7 @@
 				A16ADA1821A11B310041B10F /* AddNoteViewController.swift */,
 				A1DEF25C21A26D69004AE3CD /* AddSubjectViewController.swift */,
 				A1E8FE5721A4706A001C3F11 /* ShowMapViewController.swift */,
+				A1A1593B21A7B60100D1FA05 /* FilterNoteViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -163,6 +170,7 @@
 				A1E8FE5A21A5DEEF001C3F11 /* favorite.png */,
 				A1E8FE5D21A61193001C3F11 /* rubbish-bin.png */,
 				A1E8FE6121A6122B001C3F11 /* delete2.png */,
+				A1A1593D21A7B8C700D1FA05 /* sort.png */,
 				A1E8FE5921A5DEEB001C3F11 /* unfavorite.png */,
 				A1E8FE5F21A611AF001C3F11 /* delete.png */,
 				A1DEF26021A2883E004AE3CD /* add_image.png */,
@@ -184,6 +192,7 @@
 				A18664DC219E8B73001834A6 /* SubjectTableViewCell.xib */,
 				A17178E8219F3ACA0089812F /* NoteTableViewCell.swift */,
 				A17178E9219F3ACA0089812F /* NoteTableViewCell.xib */,
+				A1A1593F21A7C51B00D1FA05 /* SortNoteTableViewCell.swift */,
 			);
 			path = cell;
 			sourceTree = "<group>";
@@ -326,6 +335,7 @@
 				A1DEF25F21A27222004AE3CD /* save.png in Resources */,
 				A1DEF26121A28844004AE3CD /* add_image.png in Resources */,
 				A1E8FE4F21A383F8001C3F11 /* UserCollectionViewCell.xib in Resources */,
+				A1A1593E21A7B8C800D1FA05 /* sort.png in Resources */,
 				A1E8FE6221A6122C001C3F11 /* delete2.png in Resources */,
 				A1E8FE5E21A6119D001C3F11 /* rubbish-bin.png in Resources */,
 				A1E8FE6021A611B0001C3F11 /* delete.png in Resources */,
@@ -387,8 +397,10 @@
 			files = (
 				CE50A40D2120D41200B32ADB /* AddDataViewController.swift in Sources */,
 				A1E8FE4621A382F7001C3F11 /* UserViewController.swift in Sources */,
+				A1A1594021A7C51B00D1FA05 /* SortNoteTableViewCell.swift in Sources */,
 				CE50A40F2120D45D00B32ADB /* TableDataBaseViewController.swift in Sources */,
 				CE50A3FA2120D18E00B32ADB /* ViewController.swift in Sources */,
+				A1A1593C21A7B60100D1FA05 /* FilterNoteViewController.swift in Sources */,
 				A1E8FE5821A4706A001C3F11 /* ShowMapViewController.swift in Sources */,
 				A1DEF25D21A26D69004AE3CD /* AddSubjectViewController.swift in Sources */,
 				A1E8FE4921A38354001C3F11 /* UserDataProvider.swift in Sources */,

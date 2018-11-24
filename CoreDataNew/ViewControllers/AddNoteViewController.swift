@@ -45,11 +45,11 @@ class AddNoteViewController: UIViewController {
             noteTextView.text = note?.content
            
             // value from database
-            if (note?.isImp)!{
-                favoriteButton.image = UIImage(named: "favorite.png")
-            }else{
-                favoriteButton.image = UIImage(named: "unfavorite.png")
-            }
+//            if (note?.isImp)!{
+//                favoriteButton.image = UIImage(named: "favorite.png")
+//            }else{
+//                favoriteButton.image = UIImage(named: "unfavorite.png")
+//            }
             
         }
     }
@@ -100,12 +100,12 @@ class AddNoteViewController: UIViewController {
     @IBAction func favoriteButtonTapped(_ sender: UIBarButtonItem) {
         if(isEdit){
             // value from database
-            note?.isImp = !((note?.isImp)!)
-            if (note?.isImp)!{
-                sender.image = UIImage(named: "favorite.png")
-            }else{
-                sender.image = UIImage(named: "unfavorite.png")
-            }
+//            note?.isImp = !((note?.isImp)!)
+//            if (note?.isImp)!{
+//                sender.image = UIImage(named: "favorite.png")
+//            }else{
+//                sender.image = UIImage(named: "unfavorite.png")
+//            }
         }else{
             isSelected = !isSelected
             if (isSelected){
