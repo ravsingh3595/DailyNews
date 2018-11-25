@@ -19,7 +19,7 @@ protocol SelectSortOptionProtocol {
 
 class FilterNoteViewController: UIViewController {
     
-      var delegate: SelectSortOptionProtocol?
+    var delegate: SelectSortOptionProtocol?
     @IBOutlet weak var filterTableView: UITableView!
     
     var filterArray = ["Title", "Date"]
@@ -28,22 +28,24 @@ class FilterNoteViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+       
+      
     }
     
     @IBAction func closeButtonTapped(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func getSortValue() -> String {
+        var name = ""
+        if (UserDefaults.standard.string(forKey: "sort_option") != nil){
+            name = UserDefaults.standard.string(forKey: "sort_option") ?? ""
+            print(name)
+        }
+        return name
     }
-    */
-
+    
 }
 
 extension FilterNoteViewController: UITableViewDelegate, UITableViewDataSource{
@@ -58,10 +60,19 @@ extension FilterNoteViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = filterArray[indexPath.row]
+        if filterArray[indexPath.row] == getSortValue() {
+            cell.accessoryType = UITableViewCellAccessoryType.checkmark
+        }else{
+             cell.accessoryType = UITableViewCellAccessoryType.none
+        }
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        UserDefaults.standard.set(filterArray[indexPath.row], forKey: "sort_option")
         self.delegate?.sortNote(sortOption: filterArray[indexPath.row], viewController: self)
     }
+    
+    
 }
+
