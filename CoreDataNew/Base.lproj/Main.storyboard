@@ -492,7 +492,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="b43-zO-c98" firstAttribute="trailing" secondItem="Oge-xX-wZc" secondAttribute="trailing" constant="41" id="2Jo-ls-dx2"/>
                             <constraint firstAttribute="trailing" secondItem="2Ky-7C-mhN" secondAttribute="trailing" constant="8" id="4CA-Vm-C7W"/>
