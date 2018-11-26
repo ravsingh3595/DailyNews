@@ -304,7 +304,7 @@
                                         </connections>
                                     </textView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u8t-pL-9vf">
-                                        <rect key="frame" x="16" y="638" width="253" height="44"/>
+                                        <rect key="frame" x="16" y="638" width="290" height="44"/>
                                         <color key="backgroundColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="7kP-a9-8Hc"/>
@@ -323,20 +323,6 @@
                                             <action selector="saveButtonTapped:" destination="sYT-LL-Tf9" eventType="touchUpInside" id="Xnj-Et-2sw"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HNA-Ii-q1A">
-                                        <rect key="frame" x="278" y="643" width="32" height="32"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="32" id="6DS-dc-ZAl"/>
-                                            <constraint firstAttribute="height" constant="32" id="kJN-9Z-tOp"/>
-                                        </constraints>
-                                        <state key="normal" image="delete2.png">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="deleteButtonTapped:" destination="sYT-LL-Tf9" eventType="touchUpInside" id="CUb-ZT-idf"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -344,11 +330,9 @@
                                     <constraint firstAttribute="bottom" secondItem="L7Z-Uv-Xv7" secondAttribute="bottom" constant="11" id="7f7-er-Lee"/>
                                     <constraint firstItem="acQ-Or-9dC" firstAttribute="leading" secondItem="dnb-tR-FEJ" secondAttribute="leading" id="AOc-03-rJl"/>
                                     <constraint firstItem="u8t-pL-9vf" firstAttribute="leading" secondItem="dnb-tR-FEJ" secondAttribute="leading" constant="16" id="EYe-tw-yjA"/>
+                                    <constraint firstItem="L7Z-Uv-Xv7" firstAttribute="leading" secondItem="u8t-pL-9vf" secondAttribute="trailing" constant="18" id="Eid-gQ-VRk"/>
                                     <constraint firstAttribute="trailing" secondItem="acQ-Or-9dC" secondAttribute="trailing" id="MD3-NQ-GNZ"/>
-                                    <constraint firstAttribute="bottom" secondItem="HNA-Ii-q1A" secondAttribute="bottom" constant="15" id="N5l-66-CDJ"/>
-                                    <constraint firstItem="HNA-Ii-q1A" firstAttribute="leading" secondItem="u8t-pL-9vf" secondAttribute="trailing" constant="9" id="Rgw-g8-eoa"/>
                                     <constraint firstAttribute="bottom" secondItem="u8t-pL-9vf" secondAttribute="bottom" constant="8" id="Xa9-cx-HEt"/>
-                                    <constraint firstItem="L7Z-Uv-Xv7" firstAttribute="leading" secondItem="HNA-Ii-q1A" secondAttribute="trailing" constant="14" id="i77-pR-PZO"/>
                                     <constraint firstItem="IQG-Mg-BzJ" firstAttribute="leading" secondItem="dnb-tR-FEJ" secondAttribute="leading" id="lkX-y6-z6z"/>
                                     <constraint firstItem="acQ-Or-9dC" firstAttribute="top" secondItem="dnb-tR-FEJ" secondAttribute="top" id="oNc-cT-Rh7"/>
                                     <constraint firstAttribute="trailing" secondItem="L7Z-Uv-Xv7" secondAttribute="trailing" constant="11" id="wQO-Lu-8ct"/>
@@ -368,12 +352,12 @@
                     </view>
                     <navigationItem key="navigationItem" id="aAj-8H-mjg">
                         <rightBarButtonItems>
-                            <barButtonItem image="favorite.png" id="Fxa-rF-Kec">
+                            <barButtonItem image="location.png" id="Fxa-rF-Kec">
                                 <connections>
                                     <action selector="locationButtonClicked:" destination="sYT-LL-Tf9" id="zjf-DL-k3c"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="Item" image="unfavorite.png" id="jxY-uj-6ZL">
+                            <barButtonItem id="jxY-uj-6ZL">
                                 <connections>
                                     <action selector="favoriteButtonTapped:" destination="sYT-LL-Tf9" id="E56-DS-oTt"/>
                                 </connections>
@@ -798,10 +782,8 @@
     <resources>
         <image name="add_image.png" width="64" height="64"/>
         <image name="close.png" width="64" height="64"/>
-        <image name="delete2.png" width="32" height="32"/>
-        <image name="favorite.png" width="32" height="32"/>
+        <image name="location.png" width="24" height="24"/>
         <image name="sort.png" width="32" height="32"/>
-        <image name="unfavorite.png" width="32" height="32"/>
     </resources>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>

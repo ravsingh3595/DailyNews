@@ -50,9 +50,9 @@ class AddNoteViewController: UIViewController {
             titleTextView.text = noteArray?[selectedIndex!].title ?? ""
             noteTextView.text = noteArray?[selectedIndex!].content ?? ""
             if (noteArray?[selectedIndex!].isImp ?? false){
-                favoriteButton.image = UIImage(named: "favorite.png")
+//                favoriteButton.image = UIImage(named: "favorite.png")
             }else{
-                favoriteButton.image = UIImage(named: "unfavorite.png")
+//                favoriteButton.image = UIImage(named: "unfavorite.png")
             }
         
         }else{
@@ -94,30 +94,34 @@ class AddNoteViewController: UIViewController {
             let date1 = Date()
             noteArray?[selectedIndex!].setValue(date1.format(), forKey: "date")
             noteArray?[selectedIndex!].setValue(titleTextView.text, forKey: "title")
-            noteArray?[selectedIndex!].setValue(noteTextView.text, forKey: "content")
+//            noteArray?[selectedIndex!].setValue(noteTextView.text, forKey: "content")
+//            noteArray?[selectedIndex!].setValue(userLocation.latitude, forKey: "latitude")
+            noteArray?[selectedIndex!].setValue(userLocation.longitude, forKey: "longitude")
             (UIApplication.shared.delegate as! AppDelegate).saveContext()
             
         }else{
-            let locManager = CLLocationManager()
-            locManager.requestWhenInUseAuthorization()
-            var currentLocation: CLLocation!
-            
-            if( CLLocationManager.authorizationStatus() == .authorizedWhenInUse ||
-                CLLocationManager.authorizationStatus() ==  .authorizedAlways){
-                
-                currentLocation = locManager.location
-                
-            }
+//            let locManager = CLLocationManager()
+//            locManager.requestWhenInUseAuthorization()
+//            var currentLocation: CLLocation!
+//
+//            if( CLLocationManager.authorizationStatus() == .authorizedWhenInUse ||
+//                CLLocationManager.authorizationStatus() ==  .authorizedAlways){
+//
+//                currentLocation = locManager.location
+//
+//            }
             let note = Note(context: context)
             let date1 = Date()
 //            note.setValue(date.format(), forKey: "date")
             note.date = date1.format()
             note.title = titleTextView.text
             note.content = noteTextView.text
-            note.latitude = currentLocation.coordinate.latitude
-            note.longitude = currentLocation.coordinate.longitude
+            note.latitude = userLocation.latitude
+            note.longitude = userLocation.longitude
             note.subjectId = subject?.subjectId ?? 0
             note.subjectName = subject?.subjectTitle ?? ""
+            print("latitude  ", userLocation.latitude)
+            print("logitude  ", userLocation.longitude)
             (UIApplication.shared.delegate as! AppDelegate).saveContext()
         }
 //        let date = Date()
@@ -162,11 +166,15 @@ class AddNoteViewController: UIViewController {
             if isEdit {
                 // get data from database
                 let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-                let note = Note(context: context)
-                var location = CLLocationCoordinate2D()
-                location.latitude = note.latitude ?? -1.0
-                location.longitude = note.longitude ?? -1.0
-                print(note.latitude ?? -1.0)
+//                let note = Note(context: context)
+                var location1 = CLLocationCoordinate2D()
+                location1.latitude = noteArray?[selectedIndex!].latitude ?? 0
+                location1.longitude = noteArray?[selectedIndex!].longitude ?? 0
+                
+                print("latutude",  location1.latitude)
+                print("logi", location1.longitude)
+                showMapViewController.location = location1
+                print(location1.latitude)
             }else{
                 showMapViewController.location = userLocation
             }
@@ -191,11 +199,11 @@ class AddNoteViewController: UIViewController {
             if (isSelected){
                 let note = Note(context: context)
                 note.isImp = true
-                sender.image = UIImage(named: "favorite.png")
+//                sender.image = UIImage(named: "favorite.png")
             }else{
                 let note = Note(context: context)
                 note.isImp = true
-                sender.image = UIImage(named: "unfavorite.png")
+//                sender.image = UIImage(named: "unfavorite.png")
             }
         }
     }
