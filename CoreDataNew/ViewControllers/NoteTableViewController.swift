@@ -18,6 +18,8 @@ class NoteTableViewController: UITableViewController, SelectSortOptionProtocol {
     var data:[String] = ["Dev","Hiren","Bhagyashree","Himanshu","Manisha","Trupti","Prashant","Kishor","Jignesh","Rushi"]
     var filterdata:[String]?
     var noteArray: [Note]?
+    var searchedDataArray: [Note]?
+    var sortData: [Note]? = nil
     
     
     @IBOutlet weak var searchBar: UISearchBar!
@@ -60,6 +62,19 @@ class NoteTableViewController: UITableViewController, SelectSortOptionProtocol {
     
     func sortNote(sortOption: String, viewController: UIViewController) {
         print(sortOption)
+        if sortOption == "Date" {
+            self.sortData = self.noteArray?.sorted(by: { $0.date!.compare($1.date!) == .orderedAscending })
+            for obj in self.sortData! {
+                print("Sorted Date: \(obj.date) with title: \(obj.title)")
+            }
+        }else{
+            self.sortData = self.noteArray?.sorted(by: { $0.title!.compare($1.title!) == .orderedAscending })
+            for obj in self.sortData! {
+                print("Sorted Date: \(obj.date) with title: \(obj.title)")
+            }
+            
+        }
+        tableView.reloadData()
         viewController.dismiss(animated: true, completion: nil)
     }
     
@@ -73,9 +88,11 @@ class NoteTableViewController: UITableViewController, SelectSortOptionProtocol {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        if filterdata?.count != nil 
+        if searchedDataArray?.count != nil
         {
-            return filterdata?.count ?? 0
+            return searchedDataArray?.count ?? 0
+        }else if sortData?.count != nil{
+             return sortData?.count ?? 0
         }else{
             return noteArray?.count ?? 0 
         }
@@ -87,9 +104,12 @@ class NoteTableViewController: UITableViewController, SelectSortOptionProtocol {
             print("Value: ", value)
         }
         // Configure the cell...
-        if filterdata?.count != nil
+        if searchedDataArray?.count != nil
         {
-            cell.setValues(title: filterdata?[indexPath.row] ?? "", noteContent: "Math Algerbra Content Math Algerbra Content Math Algerbra Content Math Algerbra Content", dateTimeString: "21 dec, 2018 4:13 pm")
+            cell.setValues(title: searchedDataArray?[indexPath.row].title ?? "", noteContent: searchedDataArray?[indexPath.row].content ?? "", dateTimeString: searchedDataArray?[indexPath.row].date ?? "")
+        }else if sortData?.count != nil
+        {
+            cell.setValues(title: sortData?[indexPath.row].title ?? "", noteContent: sortData?[indexPath.row].content ?? "", dateTimeString: sortData?[indexPath.row].date ?? "")
         }
         else{
             let formatedDate = noteArray![indexPath.row].date!
@@ -191,12 +211,21 @@ class NoteTableViewController: UITableViewController, SelectSortOptionProtocol {
 
 extension NoteTableViewController: UISearchBarDelegate{
     
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.searchBar.endEditing(true)
+        tableView.reloadData()
+    }
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
         // filterdata  = searchText.isEmpty ? data : data.filter {(item : String) -> Bool in
         
-        filterdata = searchText.isEmpty ? data : data.filter { $0.contains(searchText) }
-        
+        self.searchedDataArray = searchText.isEmpty ? noteArray :  self.noteArray!.filter { $0.title!.contains(searchText) || $0.content!.contains(searchText) }
+      
+//        self.getSearchedData(subject: searchText)
+        for obj in self.searchedDataArray! {
+            print("Sorted Date: \(obj.date) with title: \(obj.title)")
+        }
         //return item.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
         
         tableView.reloadData()
@@ -213,6 +242,24 @@ extension NoteTableViewController: UISearchBarDelegate{
         view.endEditing(true)
         
     }
+    func getSearchedData(subject: String) {
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        do {
+            let fetchRequest : NSFetchRequest<Note> = Note.fetchRequest()
+            fetchRequest.predicate = NSPredicate(format: "title == %@", subject)
+            let fetchedResults = try context.fetch(fetchRequest)
+            searchedDataArray = fetchedResults
+        }
+        catch {
+            print ("fetch task failed in email", error)
+        }
+        
+    }
+    
+//    @nonobjc public class func searchFetchRequest() -> NSFetchRequest<Note> {
+//        return NSFetchRequest<Note>(entityName: "Note")
+//    }
+    
     
     
 }
