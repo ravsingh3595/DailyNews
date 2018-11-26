@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import CoreData
 
 class SubjectTableViewController: UITableViewController, SendSavedSubjectProtocol {
     
     var subjectArray = [Subject]()
     let cellIdentifier = "SubjectTableViewCell"
     let NoteTableViewControllerIdentifier = "NoteTableViewController"
+    var allSubjectNotes = [Note]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,6 +82,15 @@ class SubjectTableViewController: UITableViewController, SendSavedSubjectProtoco
         let ok = UIAlertAction(title: "OK", style: .destructive, handler: { (action) -> Void in
             print("Ok button tapped")
             let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            
+            self.getDataForSubject(subject: self.subjectArray[index].subjectTitle!)
+            if self.allSubjectNotes.count < 0{
+                context.delete(self.allSubjectNotes[0])
+                
+            }
+            if self.allSubjectNotes.count > 1{
+                context.delete(self.allSubjectNotes[1])
+            }
             context.delete(self.subjectArray[index])
             self.subjectArray.remove(at: index)
             (UIApplication.shared.delegate as! AppDelegate).saveContext()
@@ -98,6 +109,25 @@ class SubjectTableViewController: UITableViewController, SendSavedSubjectProtoco
         
         // Present dialog message to user
         self.present(dialogMessage, animated: true, completion: nil)
+    }
+    
+    func getDataForSubject(subject: String) {
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        do {
+            let fetchRequest : NSFetchRequest<Note> = Note.fetchRequest()
+            fetchRequest.predicate = NSPredicate(format: "subjectName == %@", subject)
+            let fetchedResults = try context.fetch(fetchRequest)
+            allSubjectNotes = fetchedResults
+            //            print(noteArray![0].title)
+        }
+        catch {
+            print ("fetch task failed in email", error)
+        }
+        
+    }
+    
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<Note> {
+        return NSFetchRequest<Note>(entityName: "Note")
     }
     
 //    func updateAlertView(index: Int) {
