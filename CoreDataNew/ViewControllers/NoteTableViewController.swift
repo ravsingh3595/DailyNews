@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class NoteTableViewController: UITableViewController, SelectSortOptionProtocol {
     
@@ -28,6 +29,7 @@ class NoteTableViewController: UITableViewController, SelectSortOptionProtocol {
         
         searchBar.showsCancelButton = true
         
+        
         self.title = subject?.subjectTitle
         
             //    lazy var searchBar = UISearchBar(frame:CGRect.zero)
@@ -36,8 +38,9 @@ class NoteTableViewController: UITableViewController, SelectSortOptionProtocol {
 //        navigationItem.titleView = searchBar
     }
     
+    
     override func viewWillAppear(_ animated: Bool) {
-        self.getData()
+        self.getDataForSubject(subject: subject?.subjectTitle ?? "")
     }
 
     @IBAction func addNoteBarButtonTapped(_ sender: UIBarButtonItem) {
@@ -67,7 +70,7 @@ class NoteTableViewController: UITableViewController, SelectSortOptionProtocol {
         {
             return filterdata?.count ?? 0
         }else{
-            return 5
+            return noteArray?.count ?? 0 
         }
     }
 
@@ -82,20 +85,20 @@ class NoteTableViewController: UITableViewController, SelectSortOptionProtocol {
             cell.setValues(title: filterdata?[indexPath.row] ?? "", noteContent: "Math Algerbra Content Math Algerbra Content Math Algerbra Content Math Algerbra Content", dateTimeString: "21 dec, 2018 4:13 pm")
         }
         else{
-             cell.setValues(title: "Math Algerbra Math Algerbra Math Algerbra Math Algerbra", noteContent: "Math Algerbra Content Math Algerbra Content Math Algerbra Content Math Algerbra Content", dateTimeString: "21 dec, 2018 4:13 pm")
+             cell.setValues(title: noteArray?[indexPath.row].title ?? "", noteContent: noteArray?[indexPath.row].content ?? "", dateTimeString: "21 dec, 2018 4:13 pm")
         }
         return cell
     }
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        var moreRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "Update", handler:{action, indexpath in
+        let moreRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "Update", handler:{action, indexpath in
             print("MORE•ACTION");
         });
         moreRowAction.backgroundColor = UIColor(red: 0.298, green: 0.851, blue: 0.3922, alpha: 1.0);
         
-        var deleteRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "Delete", handler:{action, indexpath in
+        let deleteRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "Delete", handler:{action, indexpath in
             print("DELETE•ACTION");
-            self.deleteAlertView()
+            self.deleteAlertView(index: indexPath.row)
             
         });
         
@@ -108,18 +111,25 @@ class NoteTableViewController: UITableViewController, SelectSortOptionProtocol {
         {
             addNoteViewController.isEdit = true
             addNoteViewController.subject = subject
+            addNoteViewController.selectedIndex = indexPath.row
+            addNoteViewController.note = noteArray?[indexPath.row]
 //            let destinationNavigationController = self.storyboard?.instantiateViewController(withIdentifier: "AddNoteNavigationViewController") as! UINavigationController
             self.navigationController?.pushViewController(addNoteViewController, animated: true)
 //            self.present(destinationNavigationController, animated: true, completion: nil)
         }
     }
     
-    func deleteAlertView() {
+    func deleteAlertView(index: Int) {
         let dialogMessage = UIAlertController(title: "Confirm", message: "Are you sure you want to delete this?", preferredStyle: .alert)
         
         // Create OK button with action handler
         let ok = UIAlertAction(title: "OK", style: .destructive, handler: { (action) -> Void in
             print("Ok button tapped")
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            context.delete(self.noteArray![index])
+            self.noteArray!.remove(at: index)
+            (UIApplication.shared.delegate as! AppDelegate).saveContext()
+            self.getDataForSubject(subject: self.subject?.subjectTitle ?? "")
             
         })
         
@@ -136,17 +146,23 @@ class NoteTableViewController: UITableViewController, SelectSortOptionProtocol {
         self.present(dialogMessage, animated: true, completion: nil)
     }
     
-    func getData() {
+    func getDataForSubject(subject: String) {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        do {
+            let fetchRequest : NSFetchRequest<Note> = Note.fetchRequest()
+            fetchRequest.predicate = NSPredicate(format: "subjectName == %@", subject)
+            let fetchedResults = try context.fetch(fetchRequest)
+            noteArray = fetchedResults
+//            print(noteArray![0].title)
+        }
+        catch {
+            print ("fetch task failed in email", error)
+        }
         
-        do{
-            self.noteArray = try context.fetch(Note.fetchRequest())
-        }
-        catch
-        {
-            print("Error")
-        }
-        tableView.reloadData()
+    }
+    
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<Note> {
+        return NSFetchRequest<Note>(entityName: "Note")
     }
     
     private func showModally(){

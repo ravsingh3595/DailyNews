@@ -24,11 +24,15 @@ class AddNoteViewController: UIViewController {
     var subject :Subject?
     var note: Note?
     var isSelected = false
+    var selectedIndex: Int?
+    var noteArray: [Note]?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        getData()
         titleTextView.becomeFirstResponder()
         UITextView.appearance().tintColor = UIColor.black
         
@@ -39,20 +43,53 @@ class AddNoteViewController: UIViewController {
         
         noteTextView.placeholder = "Enter Note.."
         titleTextView.placeholder = "Enter Note Title.."
+        print(subject?.subjectTitle)
         
         if(isEdit){
-            titleTextView.text = note?.title
-            noteTextView.text = note?.content
-           
-            // value from database
-//            if (note?.isImp)!{
-//                favoriteButton.image = UIImage(named: "favorite.png")
-//            }else{
-//                favoriteButton.image = UIImage(named: "unfavorite.png")
-//            }
-            
+            titleTextView.text = noteArray?[selectedIndex!].title ?? ""
+            noteTextView.text = noteArray?[selectedIndex!].content ?? ""
+            if (noteArray?[selectedIndex!].isImp ?? false){
+                favoriteButton.image = UIImage(named: "favorite.png")
+            }else{
+                favoriteButton.image = UIImage(named: "unfavorite.png")
+            }
         }
     }
+    
+    func getData() {
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        
+        do{
+            self.noteArray = try context.fetch(Note.fetchRequest())
+        }
+        catch
+        {
+            print("Error")
+        }
+    }
+    
+    @IBAction func saveButtonTapped(_ sender: UIButton) {
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        if isEdit {
+            noteArray?[selectedIndex!].setValue(titleTextView.text, forKey: "title")
+            noteArray?[selectedIndex!].setValue(noteTextView.text, forKey: "content")
+            (UIApplication.shared.delegate as! AppDelegate).saveContext()
+        }else{
+            let note = Note(context: context)
+            note.title = titleTextView.text
+            note.content = noteTextView.text
+            note.latitude = userLocation.latitude
+            note.longitude = userLocation.longitude
+            //        note.subjectId = subject?.subjectId ?? 0
+            note.subjectName = subject?.subjectTitle ?? ""
+            
+            (UIApplication.shared.delegate as! AppDelegate).saveContext()
+        }
+        navigationController?.popViewController(animated: true)
+    }
+    
+    
+    
     
     @IBAction func addImageButtonClicked(_ sender: UIButton) {
         ImagePickerManager().pickImage(self){ image in
@@ -98,6 +135,7 @@ class AddNoteViewController: UIViewController {
     }
     
     @IBAction func favoriteButtonTapped(_ sender: UIBarButtonItem) {
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         if(isEdit){
             // value from database
 //            note?.isImp = !((note?.isImp)!)
@@ -109,23 +147,18 @@ class AddNoteViewController: UIViewController {
         }else{
             isSelected = !isSelected
             if (isSelected){
+                let note = Note(context: context)
+                note.isImp = true
                 sender.image = UIImage(named: "favorite.png")
             }else{
+                let note = Note(context: context)
+                note.isImp = true
                 sender.image = UIImage(named: "unfavorite.png")
             }
         }
     }
     
-    @IBAction func saveButtonTapped(_ sender: UIButton) {
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        let note = Note(context: context)
-        note.title = titleTextView.text
-        note.content = noteTextView.text
-        note.latitude = userLocation.latitude
-        note.longitude = userLocation.longitude
-        note.subjectId = subject?.subjectId ?? 0
-        (UIApplication.shared.delegate as! AppDelegate).saveContext()
-    }
+    
     
     @IBAction func deleteButtonTapped(_ sender: UIButton) {
         

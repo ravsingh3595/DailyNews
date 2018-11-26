@@ -100,38 +100,40 @@ class SubjectTableViewController: UITableViewController, SendSavedSubjectProtoco
         self.present(dialogMessage, animated: true, completion: nil)
     }
     
-    func updateAlertView(index: Int) {
-        let dialogMessage = UIAlertController(title: "Confirm", message: "Are you sure you want to update this?", preferredStyle: .alert)
-        
-        // Create OK button with action handler
-        let ok = UIAlertAction(title: "OK", style: .destructive, handler: { (action) -> Void in
-            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-            context.delete(self.subjectArray[index])
-            self.subjectArray.remove(at: index)
-            (UIApplication.shared.delegate as! AppDelegate).saveContext()
-            self.getData()
-            // Delete the data from note as well
-        })
-        
-        // Create Cancel button with action handlder
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (action) -> Void in
-            print("Cancel button tapped")
-        }
-        
-        //Add OK and Cancel button to dialog message
-        dialogMessage.addAction(ok)
-        dialogMessage.addAction(cancel)
-        
-        // Present dialog message to user
-        self.present(dialogMessage, animated: true, completion: nil)
-    }
-    
+//    func updateAlertView(index: Int) {
+//        let dialogMessage = UIAlertController(title: "Confirm", message: "Are you sure you want to update this?", preferredStyle: .alert)
+//
+//        // Create OK button with action handler
+//        let ok = UIAlertAction(title: "OK", style: .destructive, handler: { (action) -> Void in
+//            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+//            context.delete(self.subjectArray[index])
+//            self.subjectArray.remove(at: index)
+//            (UIApplication.shared.delegate as! AppDelegate).saveContext()
+//            self.getData()
+//            // Delete the data from note as well
+//        })
+//
+//        // Create Cancel button with action handlder
+//        let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (action) -> Void in
+//            print("Cancel button tapped")
+//        }
+//
+//        //Add OK and Cancel button to dialog message
+//        dialogMessage.addAction(ok)
+//        dialogMessage.addAction(cancel)
+//
+//        // Present dialog message to user
+//        self.present(dialogMessage, animated: true, completion: nil)
+//    }
+//
     private func showModally(isEdit: Bool, index: Int){
         if let presentedViewController = self.storyboard?.instantiateViewController(withIdentifier: "AddSubjectViewController") as? AddSubjectViewController{
             presentedViewController.isEdit = isEdit
             if(isEdit){
                 presentedViewController.subject = subjectArray[index]
                 presentedViewController.index = index
+            }else{
+                presentedViewController.index = -1
             }
             presentedViewController.providesPresentationContextTransitionStyle = true
             presentedViewController.definesPresentationContext = true
