@@ -41,9 +41,8 @@ class AddNoteViewController: UIViewController {
         
         UITextView.appearance().tintColor = UIColor.black
         
-        noteTextView.placeholder = "Enter Note.."
-        titleTextView.placeholder = "Enter Note Title.."
-        print(subject?.subjectTitle)
+        
+//        print(subject?.subjectTitle)
         
         if(isEdit){
             titleTextView.text = noteArray?[selectedIndex!].title ?? ""
@@ -53,6 +52,10 @@ class AddNoteViewController: UIViewController {
             }else{
                 favoriteButton.image = UIImage(named: "unfavorite.png")
             }
+        }else{
+            print(subject?.subjectTitle ?? "")
+            noteTextView.placeholder = "Enter Note.."
+            titleTextView.placeholder = "Enter Note Title.."
         }
     }
     
@@ -80,7 +83,7 @@ class AddNoteViewController: UIViewController {
             note.content = noteTextView.text
             note.latitude = userLocation.latitude
             note.longitude = userLocation.longitude
-            //        note.subjectId = subject?.subjectId ?? 0
+            note.subjectId = subject?.subjectId ?? 0
             note.subjectName = subject?.subjectTitle ?? ""
             
             (UIApplication.shared.delegate as! AppDelegate).saveContext()

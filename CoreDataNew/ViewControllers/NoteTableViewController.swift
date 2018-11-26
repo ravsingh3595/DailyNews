@@ -44,7 +44,13 @@ class NoteTableViewController: UITableViewController, SelectSortOptionProtocol {
     }
 
     @IBAction func addNoteBarButtonTapped(_ sender: UIBarButtonItem) {
-       
+        if let addNoteViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: AddNoteViewControllerIdentifier) as? AddNoteViewController
+        {
+            addNoteViewController.isEdit = false
+            addNoteViewController.subject = subject
+            self.navigationController?.pushViewController(addNoteViewController, animated: true)
+
+        }
     }
     
     @IBAction func sortNoteButtonTapped(_ sender: UIBarButtonItem) {
