@@ -21,9 +21,12 @@ class SubjectTableViewController: UITableViewController, SendSavedSubjectProtoco
         tableView.rowHeight = 70
         getData()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        getData()
+    }
     
     @IBAction func addSubjectButtonClicked(_ sender: UIBarButtonItem) {
-        self.showModally()
+        self.showModally(isEdit: false, index: -1)
     }
     // MARK: - Table view data source
 
@@ -50,33 +53,38 @@ class SubjectTableViewController: UITableViewController, SendSavedSubjectProtoco
         {
             noteTableViewController.subject = subjectArray[indexPath.row]
             self.navigationController?.pushViewController(noteTableViewController, animated: true)
-            
         }
     }
     
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        var moreRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "Update", handler:{action, indexpath in
+        let moreRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "Update", handler:{action, indexpath in
             print("MORE•ACTION");
+            self.showModally(isEdit: true, index: indexPath.row)
         });
         moreRowAction.backgroundColor = UIColor(red: 0.298, green: 0.851, blue: 0.3922, alpha: 1.0);
-        
-        var deleteRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "Delete", handler:{action, indexpath in
+
+        let deleteRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "Delete", handler:{action, indexpath in
             print("DELETE•ACTION");
-            self.deleteAlertView()
-            
+            self.deleteAlertView(index: indexPath.row)
+
         });
-        
+
         return [deleteRowAction, moreRowAction];
     }
     
-    func deleteAlertView() {
+    func deleteAlertView(index: Int) {
         let dialogMessage = UIAlertController(title: "Confirm", message: "Are you sure you want to delete this?", preferredStyle: .alert)
         
         // Create OK button with action handler
         let ok = UIAlertAction(title: "OK", style: .destructive, handler: { (action) -> Void in
             print("Ok button tapped")
-            
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            context.delete(self.subjectArray[index])
+            self.subjectArray.remove(at: index)
+            (UIApplication.shared.delegate as! AppDelegate).saveContext()
+            self.getData()
+            // Delete the data from note as well
         })
         
         // Create Cancel button with action handlder
@@ -92,9 +100,39 @@ class SubjectTableViewController: UITableViewController, SendSavedSubjectProtoco
         self.present(dialogMessage, animated: true, completion: nil)
     }
     
+    func updateAlertView(index: Int) {
+        let dialogMessage = UIAlertController(title: "Confirm", message: "Are you sure you want to update this?", preferredStyle: .alert)
+        
+        // Create OK button with action handler
+        let ok = UIAlertAction(title: "OK", style: .destructive, handler: { (action) -> Void in
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            context.delete(self.subjectArray[index])
+            self.subjectArray.remove(at: index)
+            (UIApplication.shared.delegate as! AppDelegate).saveContext()
+            self.getData()
+            // Delete the data from note as well
+        })
+        
+        // Create Cancel button with action handlder
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (action) -> Void in
+            print("Cancel button tapped")
+        }
+        
+        //Add OK and Cancel button to dialog message
+        dialogMessage.addAction(ok)
+        dialogMessage.addAction(cancel)
+        
+        // Present dialog message to user
+        self.present(dialogMessage, animated: true, completion: nil)
+    }
     
-    private func showModally(){
+    private func showModally(isEdit: Bool, index: Int){
         if let presentedViewController = self.storyboard?.instantiateViewController(withIdentifier: "AddSubjectViewController") as? AddSubjectViewController{
+            presentedViewController.isEdit = isEdit
+            if(isEdit){
+                presentedViewController.subject = subjectArray[index]
+                presentedViewController.index = index
+            }
             presentedViewController.providesPresentationContextTransitionStyle = true
             presentedViewController.definesPresentationContext = true
             presentedViewController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext;
@@ -115,19 +153,21 @@ class SubjectTableViewController: UITableViewController, SendSavedSubjectProtoco
         }
         tableView.reloadData()
     }
- 
-    func saveSubject(title: String, viewController: UIViewController) {
+    
+    func saveSubject(title: String, viewController: UIViewController, isEdit: Bool, index: Int) {
         print("Title: ", title)
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         
-        let subject = Subject(context: context)
-        subject.subjectTitle = title
-        (UIApplication.shared.delegate as! AppDelegate).saveContext()
-        viewController.dismiss(animated: true, completion: nil)
+        if isEdit {
+            subjectArray[index].setValue(title, forKey: "subjectTitle")
+            (UIApplication.shared.delegate as! AppDelegate).saveContext()
+            viewController.dismiss(animated: true, completion: nil)
+        }else{
+            let subject = Subject(context: context)
+            subject.subjectTitle = title
+            (UIApplication.shared.delegate as! AppDelegate).saveContext()
+            viewController.dismiss(animated: true, completion: nil)
+        }
         getData()
     }
-    
-    
-
-
 }

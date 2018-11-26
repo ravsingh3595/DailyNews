@@ -9,7 +9,7 @@
 import UIKit
 
 protocol SendSavedSubjectProtocol {
-    func saveSubject(title: String, viewController: UIViewController)
+    func saveSubject(title: String, viewController: UIViewController, isEdit: Bool, index: Int)
 }
 
 class AddSubjectViewController: UIViewController {
@@ -17,11 +17,17 @@ class AddSubjectViewController: UIViewController {
     @IBOutlet weak var txtSubjectTitle: UITextField!
 
     var delegate: SendSavedSubjectProtocol?
+    var subject: Subject?
+    var isEdit: Bool!
+    var index: Int!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        if isEdit {
+            txtSubjectTitle.text = subject?.subjectTitle
+        }
     }
     
     
@@ -35,7 +41,7 @@ class AddSubjectViewController: UIViewController {
         if txtSubjectTitle.text == "" {
             CommonFunctions.showAlert(title: "Warning", message: "Please enter title", myViewController: self)
         }else{
-            self.delegate?.saveSubject(title: txtSubjectTitle.text ?? "", viewController: self)
+            self.delegate?.saveSubject(title: txtSubjectTitle.text ?? "", viewController: self, isEdit: self.isEdit, index: self.index)
         }
         
     }
