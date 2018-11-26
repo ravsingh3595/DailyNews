@@ -9,6 +9,7 @@
 import UIKit
 import CoreLocation
 import MapKit
+import CoreData
 
 class AddNoteViewController: UIViewController {
 
@@ -32,7 +33,7 @@ class AddNoteViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        getData()
+//        getData()
         titleTextView.becomeFirstResponder()
         UITextView.appearance().tintColor = UIColor.black
         
@@ -45,6 +46,7 @@ class AddNoteViewController: UIViewController {
 //        print(subject?.subjectTitle)
         
         if(isEdit){
+            getDataForSubject(subject: (subject?.subjectTitle)!)
             titleTextView.text = noteArray?[selectedIndex!].title ?? ""
             noteTextView.text = noteArray?[selectedIndex!].content ?? ""
             if (noteArray?[selectedIndex!].isImp ?? false){
@@ -52,6 +54,7 @@ class AddNoteViewController: UIViewController {
             }else{
                 favoriteButton.image = UIImage(named: "unfavorite.png")
             }
+        
         }else{
             print(subject?.subjectTitle ?? "")
             noteTextView.placeholder = "Enter Note.."
@@ -59,18 +62,32 @@ class AddNoteViewController: UIViewController {
         }
     }
     
-    func getData() {
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        
-        do{
-            self.noteArray = try context.fetch(Note.fetchRequest())
-        }
-        catch
-        {
-            print("Error")
-        }
-    }
+//    func getData() {
+//        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+//
+//        do{
+//            self.noteArray = try context.fetch(Note.fetchRequest())
+//        }
+//        catch
+//        {
+//            print("Error")
+//        }
+//    }
     
+    func getDataForSubject(subject: String) {
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        do {
+            let fetchRequest : NSFetchRequest<Note> = Note.fetchRequest()
+            fetchRequest.predicate = NSPredicate(format: "subjectName == %@", subject)
+            let fetchedResults = try context.fetch(fetchRequest)
+            noteArray = fetchedResults
+            //            print(noteArray![0].title)
+        }
+        catch {
+            print ("fetch task failed in email", error)
+        }
+        
+    }
     @IBAction func saveButtonTapped(_ sender: UIButton) {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         if isEdit {
@@ -79,15 +96,26 @@ class AddNoteViewController: UIViewController {
             noteArray?[selectedIndex!].setValue(titleTextView.text, forKey: "title")
             noteArray?[selectedIndex!].setValue(noteTextView.text, forKey: "content")
             (UIApplication.shared.delegate as! AppDelegate).saveContext()
+            
         }else{
+            let locManager = CLLocationManager()
+            locManager.requestWhenInUseAuthorization()
+            var currentLocation: CLLocation!
+            
+            if( CLLocationManager.authorizationStatus() == .authorizedWhenInUse ||
+                CLLocationManager.authorizationStatus() ==  .authorizedAlways){
+                
+                currentLocation = locManager.location
+                
+            }
             let note = Note(context: context)
             let date1 = Date()
 //            note.setValue(date.format(), forKey: "date")
             note.date = date1.format()
             note.title = titleTextView.text
             note.content = noteTextView.text
-            note.latitude = userLocation.latitude
-            note.longitude = userLocation.longitude
+            note.latitude = currentLocation.coordinate.latitude
+            note.longitude = currentLocation.coordinate.longitude
             note.subjectId = subject?.subjectId ?? 0
             note.subjectName = subject?.subjectTitle ?? ""
             (UIApplication.shared.delegate as! AppDelegate).saveContext()
@@ -133,9 +161,12 @@ class AddNoteViewController: UIViewController {
         {
             if isEdit {
                 // get data from database
+                let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+                let note = Note(context: context)
                 var location = CLLocationCoordinate2D()
-                location.latitude = note?.latitude ?? -1
-                location.longitude = note?.longitude ?? -1
+                location.latitude = note.latitude ?? -1.0
+                location.longitude = note.longitude ?? -1.0
+                print(note.latitude ?? -1.0)
             }else{
                 showMapViewController.location = userLocation
             }
@@ -168,8 +199,6 @@ class AddNoteViewController: UIViewController {
             }
         }
     }
-    
-    
     
     @IBAction func deleteButtonTapped(_ sender: UIButton) {
         
