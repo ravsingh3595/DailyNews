@@ -142,9 +142,7 @@ class NoteTableViewController: UITableViewController, SelectSortOptionProtocol {
             addNoteViewController.subject = subject
             addNoteViewController.selectedIndex = indexPath.row
             addNoteViewController.note = noteArray?[indexPath.row]
-//            let destinationNavigationController = self.storyboard?.instantiateViewController(withIdentifier: "AddNoteNavigationViewController") as! UINavigationController
             self.navigationController?.pushViewController(addNoteViewController, animated: true)
-//            self.present(destinationNavigationController, animated: true, completion: nil)
         }
     }
     
