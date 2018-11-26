@@ -84,13 +84,15 @@ class SubjectTableViewController: UITableViewController, SendSavedSubjectProtoco
             let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
             
             self.getDataForSubject(subject: self.subjectArray[index].subjectTitle!)
-            if self.allSubjectNotes.count < 0{
+            if self.allSubjectNotes.count > 0 {
                 context.delete(self.allSubjectNotes[0])
-                
+                if self.allSubjectNotes.count > 1{
+                    context.delete(self.allSubjectNotes[1])
+                }
             }
-            if self.allSubjectNotes.count > 1{
-                context.delete(self.allSubjectNotes[1])
-            }
+//            if self.allSubjectNotes.count > 1{
+//                context.delete(self.allSubjectNotes[0])
+//            }
             context.delete(self.subjectArray[index])
             self.subjectArray.remove(at: index)
             (UIApplication.shared.delegate as! AppDelegate).saveContext()
