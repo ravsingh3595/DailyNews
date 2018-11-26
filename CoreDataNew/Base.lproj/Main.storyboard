@@ -269,10 +269,10 @@
                                 <rect key="frame" x="0.0" y="88" width="375" height="690"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="IQG-Mg-BzJ">
-                                        <rect key="frame" x="0.0" y="58" width="375" height="559"/>
+                                        <rect key="frame" x="0.0" y="58" width="375" height="413"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="559" id="zgc-lg-hXt"/>
+                                            <constraint firstAttribute="height" constant="413" id="Ki5-9g-A6P"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -323,21 +323,27 @@
                                             <action selector="saveButtonTapped:" destination="sYT-LL-Tf9" eventType="touchUpInside" id="Xnj-Et-2sw"/>
                                         </connections>
                                     </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zLe-hn-v0K">
+                                        <rect key="frame" x="16" y="491" width="333" height="128"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="IQG-Mg-BzJ" firstAttribute="top" secondItem="acQ-Or-9dC" secondAttribute="bottom" constant="3" id="1Uh-FE-cxf"/>
+                                    <constraint firstItem="zLe-hn-v0K" firstAttribute="leading" secondItem="dnb-tR-FEJ" secondAttribute="leading" constant="16" id="2aY-qM-03f"/>
+                                    <constraint firstItem="zLe-hn-v0K" firstAttribute="top" secondItem="IQG-Mg-BzJ" secondAttribute="bottom" constant="20" id="2gE-Ni-C9t"/>
                                     <constraint firstAttribute="bottom" secondItem="L7Z-Uv-Xv7" secondAttribute="bottom" constant="11" id="7f7-er-Lee"/>
                                     <constraint firstItem="acQ-Or-9dC" firstAttribute="leading" secondItem="dnb-tR-FEJ" secondAttribute="leading" id="AOc-03-rJl"/>
                                     <constraint firstItem="u8t-pL-9vf" firstAttribute="leading" secondItem="dnb-tR-FEJ" secondAttribute="leading" constant="16" id="EYe-tw-yjA"/>
                                     <constraint firstItem="L7Z-Uv-Xv7" firstAttribute="leading" secondItem="u8t-pL-9vf" secondAttribute="trailing" constant="18" id="Eid-gQ-VRk"/>
+                                    <constraint firstItem="IQG-Mg-BzJ" firstAttribute="trailing" secondItem="acQ-Or-9dC" secondAttribute="trailing" id="Lff-ca-cWa"/>
                                     <constraint firstAttribute="trailing" secondItem="acQ-Or-9dC" secondAttribute="trailing" id="MD3-NQ-GNZ"/>
+                                    <constraint firstItem="u8t-pL-9vf" firstAttribute="top" secondItem="zLe-hn-v0K" secondAttribute="bottom" constant="19" id="Wuf-V7-j7c"/>
                                     <constraint firstAttribute="bottom" secondItem="u8t-pL-9vf" secondAttribute="bottom" constant="8" id="Xa9-cx-HEt"/>
-                                    <constraint firstItem="IQG-Mg-BzJ" firstAttribute="leading" secondItem="dnb-tR-FEJ" secondAttribute="leading" id="lkX-y6-z6z"/>
+                                    <constraint firstItem="IQG-Mg-BzJ" firstAttribute="top" secondItem="acQ-Or-9dC" secondAttribute="bottom" constant="3" id="bhE-4R-ri5"/>
+                                    <constraint firstAttribute="trailing" secondItem="zLe-hn-v0K" secondAttribute="trailing" constant="26" id="l7k-wY-OXq"/>
                                     <constraint firstItem="acQ-Or-9dC" firstAttribute="top" secondItem="dnb-tR-FEJ" secondAttribute="top" id="oNc-cT-Rh7"/>
+                                    <constraint firstItem="IQG-Mg-BzJ" firstAttribute="leading" secondItem="acQ-Or-9dC" secondAttribute="leading" id="qRA-1H-8Nw"/>
                                     <constraint firstAttribute="trailing" secondItem="L7Z-Uv-Xv7" secondAttribute="trailing" constant="11" id="wQO-Lu-8ct"/>
-                                    <constraint firstItem="L7Z-Uv-Xv7" firstAttribute="top" secondItem="IQG-Mg-BzJ" secondAttribute="bottom" constant="22" id="wh6-0o-Ym0"/>
-                                    <constraint firstAttribute="trailing" secondItem="IQG-Mg-BzJ" secondAttribute="trailing" id="wxu-Tp-iKd"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -367,6 +373,7 @@
                     <connections>
                         <outlet property="addButton" destination="L7Z-Uv-Xv7" id="Z4o-0G-7le"/>
                         <outlet property="favoriteButton" destination="jxY-uj-6ZL" id="JCt-D9-kIM"/>
+                        <outlet property="imageView1" destination="zLe-hn-v0K" id="yDf-Yv-o4W"/>
                         <outlet property="noteTextView" destination="IQG-Mg-BzJ" id="ZFi-yJ-Wnc"/>
                         <outlet property="titleTextView" destination="acQ-Or-9dC" id="8l3-Ja-xbL"/>
                     </connections>

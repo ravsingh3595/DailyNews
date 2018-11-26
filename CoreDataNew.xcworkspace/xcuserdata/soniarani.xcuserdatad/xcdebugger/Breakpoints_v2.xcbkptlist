@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CoreDataNew/ViewControllers/FilterNoteViewController.swift"
-            timestampString = "564955459.213431"
+            timestampString = "564961648.354727"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "32"
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CoreDataNew/ViewControllers/NoteTableViewController.swift"
-            timestampString = "564955459.213521"
+            timestampString = "564960502.940462"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "161"
-            endingLineNumber = "161"
+            startingLineNumber = "165"
+            endingLineNumber = "165"
             landmarkName = "deleteAlertView(index:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -42,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CoreDataNew/ViewControllers/ShowMapViewController.swift"
-            timestampString = "564955459.213585"
+            timestampString = "564961648.354897"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "23"
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CoreDataNew/ViewControllers/AddNoteViewController.swift"
-            timestampString = "564955459.21364"
+            timestampString = "564961648.35498"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "92"
-            endingLineNumber = "92"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
             landmarkName = "saveButtonTapped(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -74,27 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CoreDataNew/ViewControllers/AddNoteViewController.swift"
-            timestampString = "564955459.214069"
+            timestampString = "564961648.356064"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "123"
-            endingLineNumber = "123"
-            landmarkName = "saveButtonTapped(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "CoreDataNew/ViewControllers/AddNoteViewController.swift"
-            timestampString = "564955459.214409"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "174"
-            endingLineNumber = "174"
+            startingLineNumber = "199"
+            endingLineNumber = "199"
             landmarkName = "locationButtonClicked(_:)"
             landmarkType = "7">
          </BreakpointContent>
