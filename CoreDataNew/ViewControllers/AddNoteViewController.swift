@@ -17,7 +17,9 @@ class AddNoteViewController: UIViewController {
     @IBOutlet weak var noteTextView: UITextView!
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var favoriteButton: UIBarButtonItem!
+    @IBOutlet weak var imageView1: UIImageView!
     
+    @IBOutlet weak var imageView2: UIImageView!
     var isEdit = false
     let locationManager = CLLocationManager()
     var userLocation = CLLocationCoordinate2D()
@@ -28,7 +30,7 @@ class AddNoteViewController: UIViewController {
     var selectedIndex: Int?
     var noteArray: [Note]?
     
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -54,6 +56,11 @@ class AddNoteViewController: UIViewController {
             }else{
 //                favoriteButton.image = UIImage(named: "unfavorite.png")
             }
+            
+            if let image = noteArray?[selectedIndex!].contentImage{
+                imageView1.image = UIImage(data: image)
+            }
+//            imageView1.image = noteArray?[selectedIndex!].contentImage
         
         }else{
             print(subject?.subjectTitle ?? "")
@@ -96,6 +103,11 @@ class AddNoteViewController: UIViewController {
             noteArray?[selectedIndex!].setValue(titleTextView.text, forKey: "title")
 //            noteArray?[selectedIndex!].setValue(noteTextView.text, forKey: "content")
 //            noteArray?[selectedIndex!].setValue(userLocation.latitude, forKey: "latitude")
+            
+            if let imageData = imageView1.image{
+                noteArray?[selectedIndex!].setValue(UIImagePNGRepresentation(imageData), forKey: "contentImage")
+            }
+            
             noteArray?[selectedIndex!].setValue(userLocation.longitude, forKey: "longitude")
             (UIApplication.shared.delegate as! AppDelegate).saveContext()
             
@@ -120,6 +132,11 @@ class AddNoteViewController: UIViewController {
             note.longitude = userLocation.longitude
             note.subjectId = subject?.subjectId ?? 0
             note.subjectName = subject?.subjectTitle ?? ""
+            
+            if let imageData = imageView1.image{
+                  note.setValue(UIImagePNGRepresentation(imageData), forKey: "contentImage")
+            }
+          
             print("latitude  ", userLocation.latitude)
             print("logitude  ", userLocation.longitude)
             (UIApplication.shared.delegate as! AppDelegate).saveContext()
@@ -138,6 +155,7 @@ class AddNoteViewController: UIViewController {
         ImagePickerManager().pickImage(self){ image in
             
             //here is the image
+        /*
             let compressedIMg = image.resized(withPercentage: 0.8)
             var attributedString :NSMutableAttributedString!
             attributedString = NSMutableAttributedString(attributedString:self.noteTextView.attributedText)
@@ -154,7 +172,11 @@ class AddNoteViewController: UIViewController {
             let attrStringWithImage = NSAttributedString(attachment: textAttachment)
             attributedString.append(attrStringWithImage)
             attributedString.append(NSAttributedString(string: "\n"))
-            self.noteTextView.attributedText = attributedString;
+            
+            */
+//            self.noteTextView.attributedText = attributedString;
+            self.imageView1.image = image
+            
             
             self.noteTextView.becomeFirstResponder()
         }
