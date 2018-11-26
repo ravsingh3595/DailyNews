@@ -239,7 +239,6 @@
                                 <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="addNoteBarButtonTapped:" destination="Knk-dw-WkA" id="hdp-QT-ami"/>
-                                    <segue destination="sYT-LL-Tf9" kind="show" id="Lxx-cB-idd"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem image="sort.png" id="8EE-F6-zWg">
@@ -251,6 +250,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="searchBar" destination="0Fn-vp-MhD" id="Gms-F2-pUd"/>
+                        <segue destination="sYT-LL-Tf9" kind="show" id="aVD-ha-2ij"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FfE-A1-f6i" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -368,7 +368,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="aAj-8H-mjg">
                         <rightBarButtonItems>
-                            <barButtonItem image="location_white.png" id="Fxa-rF-Kec">
+                            <barButtonItem image="favorite.png" id="Fxa-rF-Kec">
                                 <connections>
                                     <action selector="locationButtonClicked:" destination="sYT-LL-Tf9" id="zjf-DL-k3c"/>
                                 </connections>
@@ -799,7 +799,7 @@
         <image name="add_image.png" width="64" height="64"/>
         <image name="close.png" width="64" height="64"/>
         <image name="delete2.png" width="32" height="32"/>
-        <image name="location_white.png" width="32" height="32"/>
+        <image name="favorite.png" width="32" height="32"/>
         <image name="sort.png" width="32" height="32"/>
         <image name="unfavorite.png" width="32" height="32"/>
     </resources>
