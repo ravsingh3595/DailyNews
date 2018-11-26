@@ -74,21 +74,29 @@ class AddNoteViewController: UIViewController {
     @IBAction func saveButtonTapped(_ sender: UIButton) {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         if isEdit {
+            let date1 = Date()
+            noteArray?[selectedIndex!].setValue(date1.format(), forKey: "date")
             noteArray?[selectedIndex!].setValue(titleTextView.text, forKey: "title")
             noteArray?[selectedIndex!].setValue(noteTextView.text, forKey: "content")
             (UIApplication.shared.delegate as! AppDelegate).saveContext()
         }else{
             let note = Note(context: context)
+            let date1 = Date()
+//            note.setValue(date.format(), forKey: "date")
+            note.date = date1.format()
             note.title = titleTextView.text
             note.content = noteTextView.text
             note.latitude = userLocation.latitude
             note.longitude = userLocation.longitude
             note.subjectId = subject?.subjectId ?? 0
             note.subjectName = subject?.subjectTitle ?? ""
-            
             (UIApplication.shared.delegate as! AppDelegate).saveContext()
         }
+//        let date = Date()
+//
+//        print(date.format())
         navigationController?.popViewController(animated: true)
+        
     }
     
     
@@ -243,4 +251,28 @@ extension AddNoteViewController: UITextViewDelegate, CLLocationManagerDelegate{
     
     
     
+}
+extension Date {
+    /**
+     Formats a Date
+     
+     - parameters format: (String) for eg dd-MM-yyyy hh-mm-ss
+     */
+    func format(format:String = "yyyy-MM-dd HH:mm:ss Z") -> String {
+        let dateFormatterGet = DateFormatter()
+        dateFormatterGet.dateFormat = format
+        
+        let dateFormatterPrint = DateFormatter()
+        dateFormatterPrint.dateFormat = "MMM d, h:mm a"
+        
+        let dateString = dateFormatterGet.string(from: self)
+        
+        if let newDate = dateFormatterGet.date(from: dateString) {
+            print(dateFormatterPrint.string(from: newDate))
+            return dateFormatterPrint.string(from: newDate)
+        } else {
+            print("There was an error decoding the string")
+            return ""
+        }
+    }
 }

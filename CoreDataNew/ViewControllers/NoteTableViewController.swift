@@ -40,7 +40,8 @@ class NoteTableViewController: UITableViewController, SelectSortOptionProtocol {
     
     
     override func viewWillAppear(_ animated: Bool) {
-        self.getDataForSubject(subject: subject?.subjectTitle ?? "")
+        self.getDataForSubject(subject: subject!.subjectTitle!)
+        tableView.reloadData()
     }
 
     @IBAction func addNoteBarButtonTapped(_ sender: UIBarButtonItem) {
@@ -91,24 +92,26 @@ class NoteTableViewController: UITableViewController, SelectSortOptionProtocol {
             cell.setValues(title: filterdata?[indexPath.row] ?? "", noteContent: "Math Algerbra Content Math Algerbra Content Math Algerbra Content Math Algerbra Content", dateTimeString: "21 dec, 2018 4:13 pm")
         }
         else{
-             cell.setValues(title: noteArray?[indexPath.row].title ?? "", noteContent: noteArray?[indexPath.row].content ?? "", dateTimeString: "21 dec, 2018 4:13 pm")
+            let formatedDate = noteArray![indexPath.row].date!
+//            print("\(noteArray![indexPath.row].date!)")
+            cell.setValues(title: noteArray?[indexPath.row].title ?? "", noteContent: noteArray?[indexPath.row].content ?? "", dateTimeString: formatedDate)
         }
         return cell
     }
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let moreRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "Update", handler:{action, indexpath in
-            print("MORE•ACTION");
-        });
-        moreRowAction.backgroundColor = UIColor(red: 0.298, green: 0.851, blue: 0.3922, alpha: 1.0);
-        
+//        let moreRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "Update", handler:{action, indexpath in
+//            print("MORE•ACTION");
+//        });
+//        moreRowAction.backgroundColor = UIColor(red: 0.298, green: 0.851, blue: 0.3922, alpha: 1.0);
+//
         let deleteRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "Delete", handler:{action, indexpath in
             print("DELETE•ACTION");
             self.deleteAlertView(index: indexPath.row)
             
         });
         
-        return [deleteRowAction, moreRowAction];
+        return [deleteRowAction];
     }
  
 
@@ -136,7 +139,7 @@ class NoteTableViewController: UITableViewController, SelectSortOptionProtocol {
             self.noteArray!.remove(at: index)
             (UIApplication.shared.delegate as! AppDelegate).saveContext()
             self.getDataForSubject(subject: self.subject?.subjectTitle ?? "")
-            
+            self.tableView.reloadData()
         })
         
         // Create Cancel button with action handlder
