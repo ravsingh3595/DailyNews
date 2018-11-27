@@ -67,6 +67,9 @@ class AddNoteViewController: UIViewController {
             noteTextView.placeholder = "Enter Note.."
             titleTextView.placeholder = "Enter Note Title.."
         }
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+        imageView1.isUserInteractionEnabled = true
+        imageView1.addGestureRecognizer(tapGestureRecognizer)
     }
     
 //    func getData() {
@@ -95,20 +98,46 @@ class AddNoteViewController: UIViewController {
         }
         
     }
+    
+    
+    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
+    {
+        let tappedImage = tapGestureRecognizer.view as! UIImageView
+        
+        let imageView = imageView1
+        let newImageView = UIImageView(image: imageView?.image)
+        newImageView.frame = UIScreen.main.bounds
+        newImageView.backgroundColor = .black
+        newImageView.contentMode = .scaleAspectFit
+        newImageView.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage))
+        newImageView.addGestureRecognizer(tap)
+        self.view.addSubview(newImageView)
+        self.navigationController?.isNavigationBarHidden = true
+        self.tabBarController?.tabBar.isHidden = true
+        
+        // Your action
+    }
+    
+    @objc func dismissFullscreenImage(_ sender: UITapGestureRecognizer) {
+        self.navigationController?.isNavigationBarHidden = false
+        self.tabBarController?.tabBar.isHidden = false
+        sender.view?.removeFromSuperview()
+    }
     @IBAction func saveButtonTapped(_ sender: UIButton) {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         if isEdit {
             let date1 = Date()
             noteArray?[selectedIndex!].setValue(date1.format(), forKey: "date")
             noteArray?[selectedIndex!].setValue(titleTextView.text, forKey: "title")
-//            noteArray?[selectedIndex!].setValue(noteTextView.text, forKey: "content")
+            noteArray?[selectedIndex!].setValue(noteTextView.text, forKey: "content")
 //            noteArray?[selectedIndex!].setValue(userLocation.latitude, forKey: "latitude")
             
             if let imageData = imageView1.image{
                 noteArray?[selectedIndex!].setValue(UIImagePNGRepresentation(imageData), forKey: "contentImage")
             }
             
-            noteArray?[selectedIndex!].setValue(userLocation.longitude, forKey: "longitude")
+//            noteArray?[selectedIndex!].setValue(userLocation.longitude, forKey: "longitude")
             (UIApplication.shared.delegate as! AppDelegate).saveContext()
             
         }else{
