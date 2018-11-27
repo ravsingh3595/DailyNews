@@ -194,6 +194,7 @@ class SubjectTableViewController: UITableViewController, SendSavedSubjectProtoco
         
         if isEdit {
             subjectArray[index].setValue(title, forKey: "subjectTitle")
+            
             (UIApplication.shared.delegate as! AppDelegate).saveContext()
             viewController.dismiss(animated: true, completion: nil)
         }else{

@@ -51,6 +51,7 @@
 		CE50A4052120D18F00B32ADB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE50A4032120D18F00B32ADB /* LaunchScreen.storyboard */; };
 		CE50A40D2120D41200B32ADB /* AddDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE50A40C2120D41200B32ADB /* AddDataViewController.swift */; };
 		CE50A40F2120D45D00B32ADB /* TableDataBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE50A40E2120D45D00B32ADB /* TableDataBaseViewController.swift */; };
+		CED20A7721ACA59A007453BF /* picture.png in Resources */ = {isa = PBXBuildFile; fileRef = CED20A7621ACA59A007453BF /* picture.png */; };
 		CEF77FC2219A266400A7935D /* CoreDataNew.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CEF77FC0219A266400A7935D /* CoreDataNew.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
@@ -103,6 +104,7 @@
 		CE50A4062120D18F00B32ADB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE50A40C2120D41200B32ADB /* AddDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDataViewController.swift; sourceTree = "<group>"; };
 		CE50A40E2120D45D00B32ADB /* TableDataBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableDataBaseViewController.swift; sourceTree = "<group>"; };
+		CED20A7621ACA59A007453BF /* picture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = picture.png; path = ../../../../../../../../Downloads/picture.png; sourceTree = "<group>"; };
 		CEF77FC1219A266400A7935D /* CoreDataNew.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataNew.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -163,6 +165,7 @@
 		A17178EC219F3C600089812F /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				CED20A7621ACA59A007453BF /* picture.png */,
 				A1DEF25621A1F662004AE3CD /* plus.png */,
 				A1DEF25A21A227D2004AE3CD /* close.png */,
 				A1E8FE5A21A5DEEF001C3F11 /* favorite.png */,
@@ -327,6 +330,7 @@
 				CE50A4052120D18F00B32ADB /* LaunchScreen.storyboard in Resources */,
 				CE50A4022120D18F00B32ADB /* Assets.xcassets in Resources */,
 				A17178EB219F3ACA0089812F /* NoteTableViewCell.xib in Resources */,
+				CED20A7721ACA59A007453BF /* picture.png in Resources */,
 				A1E8FE5B21A5DEF0001C3F11 /* unfavorite.png in Resources */,
 				A1A1596221AC888600D1FA05 /* location.png in Resources */,
 				A1DEF25F21A27222004AE3CD /* save.png in Resources */,
