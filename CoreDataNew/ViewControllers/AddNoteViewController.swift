@@ -44,7 +44,9 @@ class AddNoteViewController: UIViewController {
         
         UITextView.appearance().tintColor = UIColor.black
         
-        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+        imageView1.isUserInteractionEnabled = true
+        imageView1.addGestureRecognizer(tapGestureRecognizer)
 //        print(subject?.subjectTitle)
         
         if(isEdit){
@@ -67,6 +69,32 @@ class AddNoteViewController: UIViewController {
             noteTextView.placeholder = "Enter Note.."
             titleTextView.placeholder = "Enter Note Title.."
         }
+    }
+    
+    
+    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
+    {
+        let tappedImage = tapGestureRecognizer.view as! UIImageView
+        
+        let imageView = imageView1
+        let newImageView = UIImageView(image: imageView?.image)
+        newImageView.frame = UIScreen.main.bounds
+        newImageView.backgroundColor = .black
+        newImageView.contentMode = .scaleAspectFit
+        newImageView.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage))
+        newImageView.addGestureRecognizer(tap)
+        self.view.addSubview(newImageView)
+        self.navigationController?.isNavigationBarHidden = true
+        self.tabBarController?.tabBar.isHidden = true
+        
+        // Your action
+    }
+    
+    @objc func dismissFullscreenImage(_ sender: UITapGestureRecognizer) {
+        self.navigationController?.isNavigationBarHidden = false
+        self.tabBarController?.tabBar.isHidden = false
+        sender.view?.removeFromSuperview()
     }
     
 //    func getData() {

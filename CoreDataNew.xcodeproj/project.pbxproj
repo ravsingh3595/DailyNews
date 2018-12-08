@@ -24,6 +24,7 @@
 		A1A1593E21A7B8C800D1FA05 /* sort.png in Resources */ = {isa = PBXBuildFile; fileRef = A1A1593D21A7B8C700D1FA05 /* sort.png */; };
 		A1A1594021A7C51B00D1FA05 /* SortNoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A1593F21A7C51B00D1FA05 /* SortNoteTableViewCell.swift */; };
 		A1A1596221AC888600D1FA05 /* location.png in Resources */ = {isa = PBXBuildFile; fileRef = A1A1596121AC888500D1FA05 /* location.png */; };
+		A1A1596421ACA51000D1FA05 /* picture.png in Resources */ = {isa = PBXBuildFile; fileRef = A1A1596321ACA50F00D1FA05 /* picture.png */; };
 		A1DEF25321A1270A004AE3CD /* ImagePickerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DEF25221A1270A004AE3CD /* ImagePickerManager.swift */; };
 		A1DEF25721A1F663004AE3CD /* plus.png in Resources */ = {isa = PBXBuildFile; fileRef = A1DEF25621A1F662004AE3CD /* plus.png */; };
 		A1DEF25B21A227D2004AE3CD /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = A1DEF25A21A227D2004AE3CD /* close.png */; };
@@ -73,6 +74,7 @@
 		A1A1593D21A7B8C700D1FA05 /* sort.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sort.png; sourceTree = "<group>"; };
 		A1A1593F21A7C51B00D1FA05 /* SortNoteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortNoteTableViewCell.swift; sourceTree = "<group>"; };
 		A1A1596121AC888500D1FA05 /* location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = location.png; sourceTree = "<group>"; };
+		A1A1596321ACA50F00D1FA05 /* picture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = picture.png; sourceTree = "<group>"; };
 		A1DEF25221A1270A004AE3CD /* ImagePickerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerManager.swift; sourceTree = "<group>"; };
 		A1DEF25621A1F662004AE3CD /* plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plus.png; sourceTree = "<group>"; };
 		A1DEF25A21A227D2004AE3CD /* close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close.png; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 				A1DEF25A21A227D2004AE3CD /* close.png */,
 				A1E8FE5A21A5DEEF001C3F11 /* favorite.png */,
 				A1E8FE5D21A61193001C3F11 /* rubbish-bin.png */,
+				A1A1596321ACA50F00D1FA05 /* picture.png */,
 				A1A1596121AC888500D1FA05 /* location.png */,
 				A1E8FE6121A6122B001C3F11 /* delete2.png */,
 				A1A1593D21A7B8C700D1FA05 /* sort.png */,
@@ -327,6 +330,7 @@
 				CE50A4052120D18F00B32ADB /* LaunchScreen.storyboard in Resources */,
 				CE50A4022120D18F00B32ADB /* Assets.xcassets in Resources */,
 				A17178EB219F3ACA0089812F /* NoteTableViewCell.xib in Resources */,
+				A1A1596421ACA51000D1FA05 /* picture.png in Resources */,
 				A1E8FE5B21A5DEF0001C3F11 /* unfavorite.png in Resources */,
 				A1A1596221AC888600D1FA05 /* location.png in Resources */,
 				A1DEF25F21A27222004AE3CD /* save.png in Resources */,
